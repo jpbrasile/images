@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le projet "En même temps"</title>
+    <style>
+        :root {
+            --background-dark: #1a1a1a;
+            --background-light: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-color: #4db6ac;
+            --accent-color-hover: #45a49a;
+            --disabled-color: #4f4f4f;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100%;
+            background: var(--background-dark);
+            color: var(--text-primary);
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .logo {
+            max-width: 100px;
+            height: auto;
+        }
+        
+        .presentation {
+            max-width: 90vw;
+            width: 100%;
+            height: 90vh;
+            margin: 5vh auto;
+            background: var(--background-light);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding-top: 60px;
+        }
+        
+        .slide-container {
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        
+        .image-space {
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--background-dark);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .image-space img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        h2 {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        p, li {
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--background-dark);
+        }
+        
+        button {
+            background: var(--accent-color);
+            color: var(--background-dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        button:hover {
+            background: var(--accent-color-hover);
+        }
+        
+        button:disabled {
+            background: var(--disabled-color);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+        }
+        
+        #slideInfo {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        @media (min-width: 768px) {
+            .slide {
+                flex-direction: row;
+                padding: 2rem;
+            }
+            
+            .content {
+                flex: 3;
+                padding-right: 2rem;
+            }
+            
+            .image-space {
+                flex: 2;
+                height: auto;
+                margin-top: 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            p, li {
+                font-size: 1rem;
+            }
+            
+            button {
+                font-size: 1rem;
+            }
+            
+            #slideInfo {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/jpbrasile/images/main/Image1.png" alt="EFFITECH logo" class="logo">
+    </div>
+    <div class="presentation">
+        <div class="slide-container">
+            <div class="slide">
+                <div class="content">
+                    <h1>Le projet "En même temps"</h1>
+                    <h2>Une vision innovante pour l'agriculture du futur</h2>
+                    <p>Transformons l'agriculture en un écosystème durable, efficient et technologiquement avancé.</p>
+                </div>
+                <div class="image-space">
+                    <img src="https://r2.flux1.ai/result-Kqtz0AVkAz.webp" alt="Illustration du projet">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Notre Vision</h1>
+                    <p>Le projet "En même temps" propose une approche révolutionnaire de l'agriculture utilisant 3 sources d'énergie:</p>
+                    <ul>
+                        <li>Production par panneaux solaires: bas coût et décarbonnée</li>
+                        <li>Stockage par batterie thermique : efficace, bas coût, décarbonné  </li>
+                        <li>HT pulsée pour les procédés plasma atmosphérique </li>
+                        <li>Investissement minimal multi-applications</li>
+                        <li>Réduction des coûts, valorisation des déchets, amélioration des rendements, décarboné</li>
+                    </ul>
+                    <p>Notre objectif est de créer des exploitations agricoles autonomes, productives et respectueuses de l'environnement.</p>
+                </div>
+                <div class="image-space">
+                    <img src="https://raw.githubusercontent.com/jpbrasile/images/main/Capture%20d'%C3%A9cran%202024-08-28%20095757.png" alt="les trois sources d'énergie">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Production d'énergie renouvelable</h1>
+                    <h2>Panneaux solaires bifaciaux verticaux</h2>
+                    <ul>
+                        <li>Approche modulaire: Modules de 20 kW à haute efficacité</li>
+                        <li>Empreinte au sol réduite :Intégration parfaite avec l'activité agricole</li>
+                        <li>Production adaptée à l'usage (matin et soir)</li>
+                        <li>Multifonctionnalité : production d'énergie et clôtures</li>
+                        <li>Rentabilité rapide et revenus supplémentaires</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://www.pv-magazine.com/wp-content/uploads/2023/11/pv230038-fig1.jpg" alt="panneaux solaires">
+                    
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Stockage d'énergie efficace</h1>
+                    <h2>Batteries thermiques innovantes</h2>
+                    <ul>
+                        <li>Optimisation de l'utilisation de l'énergie solaire</li>
+                        <li>Autonomie énergétique accrue</li>
+                        <li>Synergie avec les technologies de plasma froid</li>
+                        <li>Applications multiples : chauffage, séchage, processus industriels</li>
+                        <li>Réduction significative de l'empreinte carbone</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://raw.githubusercontent.com/jpbrasile/images/main/How%20A%20Brick%20%26%20Rock%20Battery%20Is%20Changing%20Energy%20Storage%209-5%20screenshot.jpg" alt="batteries thermiques">
+                    
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Technologies de plasma froid</h1>
+                    <h2>EFFITECH : Une révolution dans l'agriculture</h2>
+                    <ul>
+                        <li>Générateurs haute tension très forte puissance, optimisés pour les process industriels</li>
+                        <li>Fonctionnement à pression atmosphérique</li>
+                        <li>Haute réactivité chimique sans catalyseurs coûteux</li>
+                        <li>Faible consommation énergétique</li>
+                        <li>Versatilité pour diverses applications agricoles</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://raw.githubusercontent.com/jpbrasile/images/main/Capture%20d'%C3%A9cran%202024-08-28%20113007.png" alt="plasma">
+                    
+                    
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Applications des plasmas froids</h1>
+                    <h2>Innovations à chaque étape de la production</h2>
+                    <ul>
+                        <li>Stimulation de la germination des graines</li>
+                        <li>Eau Activée par Plasma (PAW) pour une irrigation optimisée</li>
+                        <li>Extraction de jus par électroporation assistée</li>
+                        <li>Traitement et conservation des aliments</li>
+                        <li>Amélioration des propriétés des emballages</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://github.com/jpbrasile/images/blob/main/plasam-app.png?raw=true" alt="applis plasma">
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Gestion des déchets et production d'énergie</h1>
+                    <h2>Vers une agriculture circulaire</h2>
+                    <ul>
+                        <li>Méthanisation optimisée par plasma froid</li>
+                        <li>Valorisation du CO2 en produits à valeur ajoutée</li>
+                        <li>Production d'hydrogène vert par pyrolyse du méthane</li>
+                        <li>Traitement efficace des eaux usées et des odeurs</li>
+                        <li>Création de nouvelles sources de revenus</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://act4gaz.grdf.fr/sites/a4g/files/styles/illustrated_text/public/illustrated_text/picture/2022-04/24.4.png?itok=jKLPRtqh" alt="pyrolyse méthane">
+                    
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>L'ammoniac : vecteur énergétique du futur</h1>
+                    <h2>Une solution polyvalente pour l'agriculture</h2>
+                    <ul>
+                        <li>Production par plasma froid à faible empreinte carbone</li>
+                        <li>Densité énergétique élevée et facilité de stockage</li>
+                        <li>Utilisations multiples : carburant, production d'électricité, source de chaleur</li>
+                        <li>Double fonction : vecteur énergétique et fertilisant</li>
+                        <li>Stockage inter-saisonnier d'énergie</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://ars.els-cdn.com/content/image/1-s2.0-S1385894721011311-gr1.jpg" alt="production ammoniac">
+                   
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Une approche collaborative</h1>
+                    <h2>Synergie entre recherche, industrie et agriculture</h2>
+                    <ul>
+                        <li>Pilote en tronc commun de 200 kW pour tests et validations</li>
+                        <li>Collaboration étroite avec laboratoires et utilisateurs finaux pour chaque type d'applications</li>
+                        <li>Optimisation des coûts par mutualisation des ressources</li>
+                        <li>Accélération du processus d'innovation</li>
+                        <li>Réduction des risques pour les exploitations agricoles</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://r2.flux1.ai/result-cGuMlnVN5F.webp" alt="collaboration">
+                     
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="content">
+                    <h1>Conclusion</h1>
+                    <h2>L'agriculture du 21e siècle</h2>
+                    <p>Le projet "En même temps" ouvre la voie à une agriculture :</p>
+                    <ul>
+                        <li>Énergétiquement autonome et durable</li>
+                        <li>Économiquement viable et diversifiée</li>
+                        <li>Technologiquement avancée et innovante</li>
+                        <li>Respectueuse de l'environnement</li>
+                        <li>Capable de relever les défis alimentaires et énergétiques du futur</li>
+                    </ul>
+                </div>
+                <div class="image-space">
+                    <img src="https://github.com/jpbrasile/images/blob/main/Capture%20d'%C3%A9cran%202024-08-28%20110101.png?raw=true" alt="conclusion">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="nav">
+            <button id="prevBtn">Précédent</button>
+            <span id="slideInfo">Diapositive 1 / 10</span>
+            <button id="nextBtn">Suivant</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            function changeSlide(direction) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide += direction;
+                currentSlide = Math.max(0, Math.min(currentSlide, totalSlides - 1));
+                slides[currentSlide].classList.add('active');
+                updateButtons();
+                updateSlideInfo();
+            }
+
+            function updateButtons() {
+                document.getElementById('prevBtn').disabled = currentSlide === 0;
+                document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            }
+
+            function updateSlideInfo() {
+                document.getElementById('slideInfo').textContent = `Diapositive ${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            // Initialisation
+            slides[0].classList.add('active');
+            updateButtons();
+            updateSlideInfo();
+
+            // Ajout des écouteurs d'événements aux boutons
+            document.getElementById('prevBtn').addEventListener('click', () => changeSlide(-1));
+            document.getElementById('nextBtn').addEventListener('click', () => changeSlide(1));
+        });
+    </script>
+</body>
+</html>
