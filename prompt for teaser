@@ -1,0 +1,208 @@
+<contexte> L’objectif est d’augmenter significativement notre chiffre d’affaires.
+Notre proposition de valeur
+•	Nous avons développé une gamme de générateurs pulsés, optimisés pour la production de plasmas froids tant en phase recherche que dans une logique industrielle.
+•	Mise en location/vente possible pour permettre leurs évaluations avant d’investir. 
+•	Nous avons un projet plus global (« At the Same Time ») intégrant le générateur précédent pour conduire en trois ans l’optimisation d’un procédé pour le conduire à un TRL 7 grâce à la mise en place d’un pilote 200 kW en tronc commun, ce pilote sera multi-procédé afin de plus facilement en amortir le coût. La mise en parallèle de plusieurs petits réacteurs alimentés par un seul de nos générateurs est validée.  
+•	Nos générateurs sont très fiables (15 ans sans maintenance et sans panne sur notre première génération de générateurs) 
+•	Les procédés pour un méthaniseur 2.0 concerne par exemple le prétraitement des déchets entrant pour produire jusqu’à deux fois plus de méthane et le post-traitement évitant 90% des émission d’ammoniac pour la valorisation des digestats en engrais. On traite aussi les odeurs et les eaux usées du méthaniseur. GRTGaz serait prêt à participer au financement.
+•	MATERIANOVA est intéressé pour introduire notre générateur dans leur chaîne de plasmalyse du méthane et nous sommes en attente d’une commande de location 
+•	CPI est intéressé pour intégrer notre générateur dans leur process Roll to Roll industriel mais ils doivent faire évoluer leurs électrodes en préalable. Une synergie avec PLASMACOLA est à établir. 
+•	Nous sommes dans un consortium « PLASMACOLA » visant à la réalisation, sans produit chimique, de multi-laminés recyclables par plasmas froids. Ce projet démarre mais nous l’avons anticipé : le générateur est prêt.   
+•	Nous avons 2 brevets relatifs à un transformateur 300 kW, plus de 99% de rendement 
+•	Nous avons créé une communauté sur LinkedIn. 
+•	Nous sommes abonnés à Direct Industrie 
+•	Nous avons un partenariat informel avec PulseMC2 pour la distribution de nos produits.
+</contexte>
+<message ciblé>1.1 Clarification des Messages Clés par Cible :
+	Recherche : Mettre en avant la flexibilité (location/vente), la fiabilité, la performance des générateurs pulsés pour l'expérimentation et le développement de procédés.
+	Industrie (général) : Insister sur la fiabilité (réduction des coûts de maintenance), la robustesse, et la capacité à s'intégrer dans des processus industriels (notamment via le projet "At the Same Time").
+	Secteur du Méthaniseur : Souligner les avantages spécifiques : augmentation de la production de méthane, réduction des émissions d'ammoniac, traitement des odeurs et eaux usées. Mettre en avant le soutien potentiel de GRTGaz.
+	Plasma Froid (Start-ups) : Positionner l'entreprise comme un partenaire clé pour l'industrialisation, en soulignant l'expérience et la robustesse des solutions.
+	Partenaires (MATERIANOVA, CPI) : Mettre en évidence les avantages de l'intégration des générateurs dans leurs propres offres, en termes de performance et de fiabilité.
+</message ciblé>
+<cible> : Des sols revitalisés grâce aux plasmas froids, pour une agriculture plus durable</cible>
+<exemple de teaser>    <div className={`flex flex-col min-h-screen ${darkMode ? 'dark' : ''}`}>
+      {/* Navigation */}
+      <nav className="bg-blue-800 dark:bg-gray-900 text-white p-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="text-2xl font-bold">Fablab 2.0</div>
+          <div className="flex items-center space-x-4">
+            <a href="#features" className="hover:underline">Caractéristiques</a>
+            <a href="#partnerships" className="hover:underline">Partenariats</a>
+            <a href="#benefits" className="hover:underline">Avantages</a>
+            <a href="#contact" className="hover:underline">Contact</a>
+            <button onClick={toggleDarkMode} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+              {darkMode ? '☀️' : '🌙'}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex-grow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Hero Section */}
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-bold text-blue-800 dark:text-blue-300 mb-4">Fablab 2.0</h1>
+            <p className="text-2xl text-gray-700 dark:text-gray-300 mb-8">Un hub d'innovation industrielle pour la décarbonation</p>
+          </div>
+
+          {/* Key Features */}
+          <div id="features" className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
+              <div className="text-blue-500 text-4xl mb-4">🛠️</div>
+              <h3 className="text-xl font-semibold mb-3">Fabrication Avancée</h3>
+              <p className="text-gray-600">
+                CAO 3D et impression 3D pour métaux et céramiques
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
+              <div className="text-green-500 text-4xl mb-4">♻️</div>
+              <h3 className="text-xl font-semibold mb-3">Décarbonation</h3>
+              <p className="text-gray-600 dark:text-gray-400">Technologie de plasma froid pour des procédés industriels verts. Pilote multi-procédé basé sur le plasma froid.</p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
+              <div className="text-purple-500 text-4xl mb-4">🧠</div>
+              <h3 className="text-xl font-semibold mb-3">IA et Jumeaux Numériques</h3>
+              <p className="text-gray-600 dark:text-gray-400">Accélère la conception et le passage à l'industrialisation grâce à l'optimisation des procédés et la simulation avancée</p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
+              <div className="text-yellow-500 text-4xl mb-4">🔗</div>
+              <h3 className="text-xl font-semibold mb-3">Mutualisation</h3>
+              <p className="text-gray-600 dark:text-gray-400">Technologies et équipements mutualisés pour optimiser les ressources et favoriser la collaboration</p>
+            </div>
+          </div>
+
+          {/* Partnerships Section */}
+          <div id="partnerships" className="mb-16">
+            <h2 className="text-3xl font-bold text-blue-800 dark:text-blue-300 mb-8 text-center">Nos Partenariats</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4">Partenaires Industriels</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Nos partenaires industriels financent le Fablab 2.0, permettant l'accès à des technologies de pointe pour la décarbonation. Ils bénéficient d'un accès privilégié aux innovations et contribuent à orienter nos recherches vers des applications concrètes.
+                </p>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4">Laboratoires de Recherche</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Les laboratoires de recherche partenaires encadrent nos projets, apportant leur expertise scientifique et technique. Ils garantissent la rigueur de nos approches et facilitent le transfert de technologies innovantes vers l'industrie.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="bg-blue-800 text-white rounded-xl p-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">Rejoignez la révolution industrielle verte</h2>
+            <p className="text-xl mb-6">
+              Accélérez l'innovation et la décarbonation de l'industrie avec Fablab 2.0
+            </p>
+          </div>
+
+          {/* Benefits Grid */}
+          <div id="benefits" className="grid md:grid-cols-2 gap-8 mt-16">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4">Avantages pour l'Innovation</h3>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>✓ Accélération du processus de R&D</li>
+                <li>✓ Réduction des coûts de développement</li>
+                <li>✓ Accès à des technologies de pointe mutualisées</li>
+                <li>✓ Collaboration entre industrie et recherche</li>
+              </ul>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-4">Impact Environnemental</h3>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>✓ Développement de procédés industriels verts</li>
+                <li>✓ Réduction des émissions de carbone</li>
+                <li>✓ Promotion de l'économie circulaire</li>
+                <li>✓ Innovation dans les technologies de plasma froid</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div id="contact" className="mt-16 bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+            <h2 className="text-3xl font-bold text-blue-800 dark:text-blue-300 mb-6 text-center">Contactez-nous</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                />
+              </div>
+              <div>
+                <label htmlFor="organization" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Organisation</label>
+                <input
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                ></textarea>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-800 text-white py-2 px-4 rounded-md hover:bg-blue-900 transition duration-300"
+                >
+                  Envoyer
+                </button>
+              </div>
+            </form>
+            {formStatus && (
+              <div
+                className={`mt-4 p-4 rounded-md ${
+                  formStatus.includes("succès") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                }`}
+              >
+                <p>{formStatus}</p>
+                {errorDetails && <p className="mt-2 text-sm">{errorDetails}</p>}
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 dark:bg-gray-900 text-white py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div>© 2023 Fablab 2.0. Tous droits réservés.</div>
+          <a href={import.meta.url.replace("esm.town", "val.town")} target="_top" className="hover:underline">
+            Voir le code source
+          </a>
+        </div>
+      </footer>
+    </div>
+  );
+}  </exemple de teaser>
+
+Tu es un spécialiste en marketing qui partant du <contexte>, de nos <message ciblée> et de notre <cible> produit un texte de teaser adapté suivant cet <exemple de teaser>
