@@ -39,6 +39,7 @@ Créer un teaser pour une page web qui attire et engage différentes cibles (che
 /** @jsxImportSource https://esm.sh/react@18.2.0 */
 import React, { useState, useEffect } from "https://esm.sh/react@18.2.0";
 import { createRoot } from "https://esm.sh/react-dom@18.2.0/client";
+import { email } from "https://esm.town/v/std/email";
 
 interface FormData {
   name: string;
@@ -48,9 +49,11 @@ interface FormData {
 }
 
 function App() {
+  // State management for form submission status and dark mode toggle
   const [formStatus, setFormStatus] = useState<string | null>(null);
   const [darkMode, setDarkMode] = useState(false);
 
+  // Apply dark mode class to document when state changes
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -59,6 +62,7 @@ function App() {
     }
   }, [darkMode]);
 
+  // Form submission handler with mock API endpoint
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -71,7 +75,7 @@ function App() {
     };
 
     try {
-      const response = await fetch('/submit-form', {
+      const response = await fetch('/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -96,7 +100,7 @@ function App() {
           <div className="text-2xl font-bold">AgroPlasma 2.0</div>
           <div className="flex items-center space-x-4">
             <a href="#technologies" className="hover:underline">Technologies</a>
-            <a href="#projets" className="hover:underline">Projets</a>
+            <a href="#applications" className="hover:underline">Applications</a>
             <a href="#avantages" className="hover:underline">Avantages</a>
             <a href="#contact" className="hover:underline">Contact</a>
             <button
@@ -110,10 +114,10 @@ function App() {
         </div>
       </nav>
 
-      {/* Contenu Principal */}
+      {/* Main Content */}
       <main className="flex-grow bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Section Héros */}
+          {/* Hero Section */}
           <div className="text-center mb-16">
             <h1 className="text-5xl font-bold text-green-900 dark:text-green-300 mb-4">
               AgroPlasma 2.0
@@ -121,82 +125,161 @@ function App() {
             <p className="text-2xl text-gray-900 dark:text-gray-300 mb-8">
               Des sols revitalisés grâce aux plasmas froids, pour une agriculture plus durable.
             </p>
+            <div className="mt-8">
+              <button className="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                Découvrir nos solutions
+              </button>
+            </div>
           </div>
 
-          {/* Section Technologies */}
+          {/* Value Proposition Section - Targeted for different audiences */}
           <div id="technologies" className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {/* For Research Audience */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
-              <div className="text-green-500 text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Technologie Pulsée</h3>
+              <div className="text-green-500 text-4xl mb-4">🔬</div>
+              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Pour la Recherche</h3>
               <p className="text-gray-900 dark:text-gray-300">
-                Nos générateurs pulsés, éprouvés sur 15 ans sans maintenance, offrent la flexibilité de la location ou de la vente pour expérimenter et optimiser vos procédés.
+                Générateurs pulsés flexibles (location/vente), fiables sur 15 ans sans maintenance, idéaux pour l'expérimentation et le développement de procédés agricoles innovants.
               </p>
             </div>
 
+            {/* For Industrial Audience */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
-              <div className="text-blue-500 text-4xl mb-4">🔬</div>
-              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Recherche & Développement</h3>
+              <div className="text-blue-500 text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Pour l'Industrie</h3>
               <p className="text-gray-900 dark:text-gray-300">
-                La robustesse de nos solutions permet de passer de la recherche à l'industrialisation, notamment via notre projet « At the Same Time ».
+                Solutions robustes réduisant les coûts de maintenance, conçues pour s'intégrer dans des processus industriels via notre projet "At the Same Time".
               </p>
             </div>
 
+            {/* For Methane Sector */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
               <div className="text-yellow-500 text-4xl mb-4">🌱</div>
-              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Valorisation Agro-écologique</h3>
+              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Méthaniseurs 2.0</h3>
               <p className="text-gray-900 dark:text-gray-300">
-                En améliorant la production de méthane, en réduisant les émissions d'ammoniac et en traitant les digestats, nos procédés favorisent la transformation des sols pour une agriculture durable.
+                Doublez votre production de méthane, réduisez 90% des émissions d'ammoniac et valorisez vos digestats en engrais pour des sols revitalisés, avec le soutien de GRTGaz.
               </p>
             </div>
 
+            {/* For Startups/Partners */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
               <div className="text-purple-500 text-4xl mb-4">🤝</div>
-              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Partenariats Stratégiques</h3>
+              <h3 className="text-xl font-semibold mb-3 text-green-900 dark:text-green-300">Pour Partenaires</h3>
               <p className="text-gray-900 dark:text-gray-300">
-                Alliés avec xxx, yyy, et soutenus par GRTGaz, nous intégrons nos solutions dans des process industriels et agricoles pour une synergie optimale.
+                Intégrez nos générateurs à vos procédés. Déjà validés pour la plasmalyse du méthane et les process Roll to Roll industriels. Partenaire clé pour l'industrialisation.
               </p>
             </div>
           </div>
 
-          {/* Section Projets & Avantages */}
-          <div id="projets" className="mb-16">
+          {/* Technologies & Features Highlight */}
+          <div id="applications" className="mb-16">
             <h2 className="text-3xl font-bold text-green-900 dark:text-green-300 mb-8 text-center">
-              Projets Innovants pour des Terres Revitalisées
+              Nos Technologies pour une Agriculture Régénérative
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <h3 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-4">
+                  Générateurs Pulsés Haute Performance
+                </h3>
+                <ul className="space-y-2 text-gray-900 dark:text-gray-300">
+                  <li>• Fiabilité exceptionnelle - 15 ans sans maintenance</li>
+                  <li>• Location ou achat selon vos besoins</li>
+                  <li>• Transformateurs brevetés avec 99% de rendement</li>
+                  <li>• Compatibilité multi-réacteurs en parallèle</li>
+                </ul>
+              </div>
               <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
                 <h3 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-4">
                   Projet "At the Same Time"
                 </h3>
                 <p className="text-gray-900 dark:text-gray-300">
-                  Un pilote multi-procédé de 200 kW qui optimise l'usage des plasmas froids, alliant innovation industrielle et transformation durable des sols.
+                  Notre pilote multi-procédé de 200 kW optimise le traitement des sols en seulement trois ans, pour atteindre un TRL 7 et assurer une implantation industrielle rapide.
+                </p>
+                <div className="mt-4">
+                  <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                    En savoir plus
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Agricultural Applications Section */}
+          <div id="avantages" className="mb-16">
+            <h2 className="text-3xl font-bold text-green-900 dark:text-green-300 mb-8 text-center">
+              Applications Concrètes pour l'Agriculture
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <div className="text-3xl mb-3">🌿</div>
+                <h3 className="text-lg font-semibold text-green-900 dark:text-green-300 mb-2">
+                  Traitement des Digestats
+                </h3>
+                <p className="text-gray-900 dark:text-gray-300">
+                  Réduction de 90% des émissions d'ammoniac et transformation en engrais écologiques pour des sols plus fertiles.
                 </p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-green-900 dark:text-green-300 mb-4">
-                  Innovation Agro-écologique
+                <div className="text-3xl mb-3">♻️</div>
+                <h3 className="text-lg font-semibold text-green-900 dark:text-green-300 mb-2">
+                  Prétraitement des Déchets
                 </h3>
                 <p className="text-gray-900 dark:text-gray-300">
-                  Des procédés permettant d'améliorer la qualité des sols tout en réduisant les coûts d'exploitation et les impacts environnementaux.
+                  Augmentez jusqu'à 100% la production de méthane grâce à notre technologie de prétraitement des déchets organiques.
+                </p>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <div className="text-3xl mb-3">💧</div>
+                <h3 className="text-lg font-semibold text-green-900 dark:text-green-300 mb-2">
+                  Traitement des Eaux et Odeurs
+                </h3>
+                <p className="text-gray-900 dark:text-gray-300">
+                  Solution intégrée pour traiter les eaux usées et neutraliser les odeurs des installations agricoles.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Section Appel à l'Action */}
-          <div id="avantages" className="bg-green-800 dark:bg-green-900 text-white rounded-xl p-8 text-center mb-16">
+          {/* Call to Action */}
+          <div className="bg-green-800 dark:bg-green-900 text-white rounded-xl p-8 text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">
-              Rejoignez la Révolution Agricole
+              Transformez votre Exploitation Agricole
             </h2>
             <p className="text-xl mb-6">
-              Ensemble, exploitons la puissance des plasmas froids pour transformer vos sols et bâtir une agriculture respectueuse de l'environnement.
+              Nos générateurs pulsés sont prêts à révolutionner l'agriculture en régénérant vos sols tout en optimisant votre rendement.
             </p>
-            <button className="bg-white text-green-800 dark:bg-gray-800 dark:text-green-300 py-2 px-4 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
-              En savoir plus
-            </button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-white text-green-800 dark:bg-gray-800 dark:text-green-300 py-2 px-6 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 font-bold">
+                Demander une démonstration
+              </button>
+              <button className="bg-transparent border-2 border-white text-white py-2 px-6 rounded-md hover:bg-white hover:text-green-800 transition duration-300 font-bold">
+                Télécharger notre brochure
+              </button>
+            </div>
           </div>
 
-          {/* Section Contact */}
+          {/* Testimonials/Partners */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-green-900 dark:text-green-300 mb-8 text-center">
+              Ils nous font confiance
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <p className="italic text-gray-800 dark:text-gray-300 mb-4">
+                  "Intégrer les générateurs AgroPlasma 2.0 dans notre chaîne de plasmalyse du méthane a considérablement amélioré notre efficacité."
+                </p>
+                <div className="font-semibold text-green-800 dark:text-green-400">Partenaire xxx</div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+                <p className="italic text-gray-800 dark:text-gray-300 mb-4">
+                  "La fiabilité des générateurs et leur capacité d'intégration dans notre processus Roll to Roll ont été déterminantes pour notre partenariat."
+                </p>
+                <div className="font-semibold text-green-800 dark:text-green-400">Partenaire yyy</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
           <div id="contact" className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
             <h2 className="text-3xl font-bold text-green-900 dark:text-green-300 mb-6 text-center">
               Contactez-nous
@@ -237,6 +320,22 @@ function App() {
                   required
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
+              </div>
+              <div>
+                <label htmlFor="interest" className="block text-sm font-medium text-gray-900 dark:text-gray-300">
+                  Votre intérêt principal
+                </label>
+                <select
+                  id="interest"
+                  name="interest"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                >
+                  <option value="research">Recherche</option>
+                  <option value="industry">Application industrielle</option>
+                  <option value="methane">Méthaniseur</option>
+                  <option value="agriculture">Agriculture</option>
+                  <option value="partnership">Partenariat</option>
+                </select>
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -280,13 +379,13 @@ function App() {
           <div className="flex flex-wrap justify-between items-center">
             <div className="w-full md:w-1/3 mb-6 md:mb-0">
               <h3 className="text-xl font-bold mb-2">AgroPlasma 2.0</h3>
-              <p className="text-sm">Révolutionner l'agriculture avec les plasmas froids</p>
+              <p className="text-sm">Revitaliser les sols pour une agriculture durable</p>
             </div>
             <div className="w-full md:w-1/3 mb-6 md:mb-0">
               <h4 className="text-lg font-semibold mb-2">Liens rapides</h4>
               <ul className="space-y-2">
                 <li><a href="#technologies" className="hover:underline">Technologies</a></li>
-                <li><a href="#projets" className="hover:underline">Projets</a></li>
+                <li><a href="#applications" className="hover:underline">Applications</a></li>
                 <li><a href="#avantages" className="hover:underline">Avantages</a></li>
                 <li><a href="#contact" className="hover:underline">Contact</a></li>
               </ul>
@@ -295,13 +394,12 @@ function App() {
               <h4 className="text-lg font-semibold mb-2">Suivez-nous</h4>
               <div className="flex space-x-4">
                 <a href="#" className="hover:text-green-300">LinkedIn</a>
-                <a href="#" className="hover:text-green-300">Twitter</a>
-                <a href="#" className="hover:text-green-300">Facebook</a>
+                <a href="#" className="hover:text-green-300">Direct Industrie</a>
               </div>
             </div>
           </div>
           <div className="mt-8 text-center text-sm">
-            <p>&copy; 2023 AgroPlasma 2.0. Tous droits réservés.</p>
+            <p>&copy; 2025 AgroPlasma 2.0. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
@@ -318,10 +416,27 @@ if (typeof document !== "undefined") {
 }
 
 export default async function server(request: Request): Promise<Response> {
-  if (request.method === 'POST' && new URL(request.url).pathname === '/submit-form') {
+  if (request.method === 'POST' && new URL(request.url).pathname === '/submit') {
     const formData: FormData = await request.json();
     console.log('Form submitted:', formData);
-    // Traitez les données du formulaire : enregistrez-les, envoyez un email, etc.
+
+    // Send email
+    try {
+      await email({
+        to: "jp.brasile@gmail.com",
+        subject: "Nouveau contact AgroPlasma 2.0",
+        text: `Nom: ${formData.name}\nEmail: ${formData.email}\nOrganisation: ${formData.organization}\nMessage: ${formData.message}`,
+        html: `<h1>Nouveau contact AgroPlasma 2.0</h1>
+               <p><strong>Nom:</strong> ${formData.name}</p>
+               <p><strong>Email:</strong> ${formData.email}</p>
+               <p><strong>Organisation:</strong> ${formData.organization}</p>
+               <p><strong>Message:</strong> ${formData.message}</p>`
+      });
+      console.log('Email sent successfully');
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+
     return new Response(JSON.stringify({ message: 'Form submitted successfully' }), {
       headers: { 'Content-Type': 'application/json' },
     });
@@ -333,7 +448,7 @@ export default async function server(request: Request): Promise<Response> {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AgroPlasma 2.0 - Révolutionner l'agriculture avec les plasmas froids</title>
+        <title>AgroPlasma 2.0 - Des sols revitalisés pour une agriculture durable</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
           tailwind.config = {
@@ -371,14 +486,13 @@ export default async function server(request: Request): Promise<Response> {
       </body>
     </html>
   `,
-  {mate
-
+  {
     headers: {
       "content-type": "text/html",
     },
   });
 }
-</exemple de teaser>
+[/exemple de teaser]
 
 Tu es un spécialiste en marketing digital et en rédaction de contenu web. Tu es également expert en conception d'interfaces utilisateur avec React et Tailwind CSS. En te basant sur le <contexte>, le <message ciblé>, la <cible>, et l'<objectif>, génère le code React complet pour un teaser de page web, en t'inspirant de l'<exemple de teaser> fourni, mais en l'adaptant spécifiquement à AgroPlasma 2.0. 
 
