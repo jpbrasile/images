@@ -12,11 +12,13 @@
 
 1. [Contexte et objectifs](#1-contexte-et-objectifs)
 2. [Hypothèses de modélisation](#2-hypothèses-de-modélisation)
-3. [Solutions proposées](#3-solutions-proposées)
-4. [Résultats de simulation](#4-résultats-de-simulation)
-5. [Points à trancher](#5-points-à-trancher)
-6. [Risques identifiés](#6-risques-identifiés)
-7. [Prochaines étapes](#7-prochaines-étapes)
+3. [Solutions - Mode Résistif (25 kV)](#3-solutions-proposées---mode-résistif-25-kv)
+4. [Solutions - Mode Capacitif (50 kV)](#4-solutions-proposées---mode-capacitif-50-kv)
+5. [Comparaison des deux modes](#5-comparaison-des-deux-modes)
+6. [Résultats de simulation](#6-résultats-de-simulation)
+7. [Points à trancher](#7-points-à-trancher)
+8. [Risques identifiés](#8-risques-identifiés)
+9. [Prochaines étapes](#9-prochaines-étapes)
 
 ---
 
@@ -87,7 +89,7 @@ Capacité stockage:       C_stock ≥ I × t_pulse / (0.05 × V)
 
 ---
 
-## 3. SOLUTIONS PROPOSÉES
+## 3. SOLUTIONS PROPOSÉES - MODE RÉSISTIF (25 kV)
 
 ### 3.1 Matériau électrodes: TECAPEEK ELS nano black
 
@@ -167,7 +169,84 @@ Capacité stockage:       C_stock ≥ I × t_pulse / (0.05 × V)
 
 ---
 
-## 4. RÉSULTATS DE SIMULATION
+## 4. SOLUTIONS PROPOSÉES - MODE CAPACITIF (50 kV)
+
+### 4.1 Principe du mode capacitif
+
+En mode capacitif, les électrodes sont recouvertes d'un isolant (PEEK standard, ρ ~ 10¹⁴ Ω·m).
+Le courant est principalement **réactif** (déphasé de 90°), ce qui permet:
+- Des tensions plus élevées (50 kV vs 25 kV)
+- Des champs électriques 2-4× supérieurs
+- Très peu de dissipation thermique
+
+### 4.2 Matériau isolant: PEEK standard
+
+| Propriété | Valeur | Unité |
+|-----------|--------|-------|
+| Résistivité | 10¹⁴ | Ω·m |
+| Permittivité εᵣ | 3.3 | - |
+| Épaisseur optimale | 0.5 | mm |
+| Rigidité diélectrique | ~20 | kV/mm |
+
+### 4.3 Dimensionnement optimisé - Mode Capacitif
+
+#### Cellules Batch (50 kV)
+
+| Volume | Gap | Surface | Côté | Épaisseur PEEK | Capacité | E | I |
+|--------|-----|---------|------|----------------|----------|---|---|
+| 10 mL | 2.0 mm | 50 cm² | 71 mm | **0.5 mm** | 0.3 nF | **250 kV/cm** | 2.3 A |
+| 50 mL | 2.0 mm | 250 cm² | 158 mm | 0.5 mm | 1.5 nF | 250 kV/cm | 11.5 A |
+| 100 mL | 2.0 mm | 500 cm² | 224 mm | 0.5 mm | 2.9 nF | 250 kV/cm | 22.9 A |
+| 250 mL | 2.7 mm | 920 cm² | 303 mm | 0.5 mm | 5.4 nF | 184 kV/cm | 42.2 A |
+| 500 mL | 5.6 mm | 895 cm² | 299 mm | 0.5 mm | 5.2 nF | 89 kV/cm | 41.1 A |
+
+#### Cellules Continu (50 kV)
+
+| Débit | Gap | Surface | Côté | Épaisseur PEEK | E | P_avg |
+|-------|-----|---------|------|----------------|---|-------|
+| 10 kg/h | 1.0 mm | 50 cm² | 71 mm | 0.5 mm | **500 kV/cm** | ~0 W |
+| 50 kg/h | 1.0 mm | 208 cm² | 144 mm | 0.5 mm | 500 kV/cm | ~0 W |
+| 100 kg/h | 1.0 mm | 417 cm² | 204 mm | 0.5 mm | 500 kV/cm | ~0 W |
+
+**Note:** La puissance dissipée est quasi-nulle car le courant est capacitif (réactif).
+
+---
+
+## 5. COMPARAISON DES DEUX MODES
+
+### 5.1 Tableau comparatif
+
+| Critère | Résistif (25 kV) | Capacitif (50 kV) | Avantage |
+|---------|------------------|-------------------|----------|
+| Tension nominale | 25 kV | 50 kV | **Capacitif** |
+| Champ E max | 125 kV/cm | 500 kV/cm | **Capacitif** |
+| Courant crête | 140-144 A | 2-42 A | **Capacitif** |
+| Dissipation | 219-2221 W | ~0 W | **Capacitif** |
+| Épaisseur PEEK | 4.5-19 mm | 0.5 mm | **Capacitif** |
+| Risque claquage | Faible | Élevé | **Résistif** |
+| Robustesse | Excellente | Moyenne | **Résistif** |
+| Coût PEEK | ~10 kg | ~1 kg | **Capacitif** |
+
+![Comparaison Résistif vs Capacitif](https://raw.githubusercontent.com/jpbrasile/images/main/CEP_comparaison_resistif_capacitif.png)
+
+![Courant - Deux Modes](https://raw.githubusercontent.com/jpbrasile/images/main/CEP_courant_deux_modes.png)
+
+![Épaisseur PEEK - Comparaison](https://raw.githubusercontent.com/jpbrasile/images/main/CEP_epaisseur_peek_comparaison.png)
+
+### 5.2 Recommandations par application
+
+| Application | Mode recommandé | Justification |
+|-------------|-----------------|---------------|
+| R&D, tests exploratoires | **Capacitif** | Champs élevés, flexibilité |
+| Production industrielle | **Résistif** | Robustesse, fiabilité |
+| Produits sensibles chaleur | **Capacitif** | Pas d'échauffement |
+| Hautes conductivités | **Résistif** | Meilleur contrôle courant |
+
+![Spécifications Deux Modes](https://raw.githubusercontent.com/jpbrasile/images/main/CEP_specifications_deux_modes.png)
+
+---
+
+## 6. RÉSULTATS DE SIMULATION
 
 ### 4.1 Conformité aux contraintes
 
@@ -215,7 +294,7 @@ C_stock = I_max × t_pulse / (0.05 × V) = 160 × 10µs / (0.05 × 25kV) = 1.28 
 
 ---
 
-## 5. POINTS À TRANCHER
+## 7. POINTS À TRANCHER
 
 ### 🔴 DÉCISION REQUISE #1: Résistivité TECAPEEK
 
@@ -297,7 +376,7 @@ Le mode capacitif (PEEK isolant + effet DBD) permettrait:
 
 ---
 
-## 6. RISQUES IDENTIFIÉS
+## 8. RISQUES IDENTIFIÉS
 
 ### 6.1 Risques techniques
 
@@ -319,7 +398,7 @@ Le mode capacitif (PEEK isolant + effet DBD) permettrait:
 
 ---
 
-## 7. PROCHAINES ÉTAPES
+## 9. PROCHAINES ÉTAPES
 
 ### Phase immédiate (à valider par CTO)
 
