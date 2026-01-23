@@ -3,266 +3,170 @@
 ## Projet: P202602AO - Generateur CEP UBS/IRDL Pontivy
 
 **Date:** 23 janvier 2026
-**Version:** 2.0
-**Statut:** En attente validation CTO
+**Version:** 2.1 (CORRIGEE)
+**Statut:** REVISION CRITIQUE - Attente validation CTO
 
 ---
 
-## Resume Executif
+## ALERTE CRITIQUE
 
-Ce rapport presente l'architecture v2 du generateur CEP (Champs Electriques Pulses) conforme au CCTP P202602AO. L'architecture proposee utilise:
+![Conclusion CTO](https://raw.githubusercontent.com/jpbrasile/images/main/conclusion_cto_CRITIQUE.png)
 
-- **Generateur bipolaire +/-25 kV**
-- **2 cellules batch avec anneaux de garde reglables** (+ option 3eme cellule)
-- **Double mode**: Resistif (TECAPEEK) et Capacitif DBD (PEEK isolant)
-- **Effet memoire DBD**: 50 kV effectif en mode capacitif
+**Le mode RESISTIF avec electrodes TECAPEEK ne fonctionne PAS a haute conductivite.**
 
-**DECISION CTO REQUISE:** Choix entre 3 options pour la limitation 500 mL en mode resistif.
+- E_theorique = 20-31 kV/cm
+- **E_REEL = 0.01 kV/cm** (quasi NUL!)
+- Efficacite < 0.1% a sigma = 50 mS/cm
 
----
-
-## 1. Architecture Generateur
-
-### 1.1 Specifications Generateur
-
-| Parametre | Valeur | Note |
-|-----------|--------|------|
-| Amplitude | +/-25 kV | Bipolaire |
-| V mode resistif | 25 kV | Direct |
-| V mode capacitif | 50 kV | Effet memoire DBD |
-| I_max | 160 A | Crete |
-| C_stock | 1.92 uF | Stockage energie |
-| P_max AC/DC | 4 kW | Entree |
-
-### 1.2 Effet Memoire DBD (Mode Capacitif)
-
-En mode capacitif avec electrodes PEEK isolant, l'effet memoire DBD permet de doubler la tension effective:
-
-1. Pulse +25 kV -> charge du dielectrique
-2. Pulse -25 kV -> inversion -> champ total = **50 kV**
-
-Cet effet est fondamental pour atteindre les champs eleves requis par le CCTP (jusqu'a 50 kV/cm).
+**Le mode CAPACITIF (DBD) est la SEULE solution viable pour les milieux conducteurs.**
 
 ---
 
-## 2. Architecture Cellules v2
+## 1. Probleme Identifie: Chute de Tension dans les Electrodes
 
-### 2.1 Contrainte E_max
+### 1.1 Analyse E_reel vs E_theorique
 
-Pour gerer les effets de bord (amplification x1.5-3), nous imposons:
+![E reel vs theorique](https://raw.githubusercontent.com/jpbrasile/images/main/E_reel_vs_theorique_CRITIQUE.png)
 
-**E_max = 50 kV/cm**
+**Commentaire:** Ce graphique montre l'ecart catastrophique entre le champ theorique (E = V/gap) et le champ reel (E = V_gap/gap) en mode resistif. A haute conductivite, le champ reel tend vers zero car toute la tension est dissipee dans les electrodes TECAPEEK.
 
-Cela definit les gaps minimaux:
-- Mode resistif (25 kV): gap_min = **5 mm**
-- Mode capacitif (50 kV): gap_min = **10 mm**
+### 1.2 Cause: Distribution des Resistances
 
-### 2.2 Deux Cellules avec Anneaux de Garde
+![Distribution resistances](https://raw.githubusercontent.com/jpbrasile/images/main/distribution_resistances.png)
 
-| Cellule | Gap | Volume | Surface | Cote |
-|---------|-----|--------|---------|------|
-| Petite | 8 mm | 10-80 mL | 12.5-100 cm2 | 35-100 mm |
-| Grande | 12 mm | 80-500 mL | 66.7-416.7 cm2 | 82-204 mm |
+**Commentaire:** A haute conductivite (50 mS/cm), R_milieu = 0.06 Ohm tandis que R_electrode = 120 Ohm. Le ratio R_elec/R_med depasse 2000x! La quasi-totalite de la tension (99.95%) est dissipee dans les electrodes, pas dans le milieu a traiter.
 
-**Avantages des anneaux de garde:**
-- Volume ajustable sans changer le gap
-- Effets de bord rejetes hors zone utile
-- Electrodes interchangeables (resistif/capacitif)
-- Simplification: 2 cellules couvrent 10-500 mL
+### 1.3 Efficacite de Transfert de Tension
 
-### 2.3 Plages de Champ E
+![Efficacite transfert](https://raw.githubusercontent.com/jpbrasile/images/main/efficacite_transfert_tension.png)
 
-| Cellule | Mode Resistif (25 kV) | Mode Capacitif (50 kV) |
-|---------|----------------------|------------------------|
-| Petite | 1.2 - 31.2 kV/cm | 1.2 - 62.5 kV/cm* |
-| Grande | 0.8 - 20.8 kV/cm | 0.8 - 41.7 kV/cm |
-
-*Note: 62.5 kV/cm depasse E_max, donc non utilisable a 50 kV
+**Commentaire:** L'efficacite (V_gap/V_appliquee) chute rapidement avec la conductivite. Pour tous les volumes, l'efficacite passe sous 1% des que sigma > 5-10 mS/cm. Le mode resistif est donc limite aux milieux tres peu conducteurs.
 
 ---
 
-## 3. DECISION CTO: Limitation 500 mL Mode Resistif
+## 2. Solution: Mode Capacitif (DBD)
 
-### 3.1 Probleme Identifie
+### 2.1 Comparaison Resistif vs Capacitif
 
-Avec la grande cellule (gap=12mm) et un volume de 500 mL:
-- Surface = 416.7 cm2
-- A sigma=50 mS/cm avec electrode TECAPEEK 25mm: **I = 208 A > 160 A**
-- Epaisseur electrode requise pour I<=160A: **32.5 mm** (non pratique)
+![Resistif vs Capacitif](https://raw.githubusercontent.com/jpbrasile/images/main/resistif_vs_capacitif_CONCLUSION.png)
 
-### 3.2 Trois Options Proposees
+**Commentaire:** A sigma = 50 mS/cm, le mode resistif produit E ~ 0.01 kV/cm (inutilisable) tandis que le mode capacitif produit E = 25-42 kV/cm (efficace). Le mode capacitif est la seule solution viable pour les milieux conducteurs.
 
-#### Option A: Limiter le Volume a 384 mL
+### 2.2 Effet Memoire DBD
+
+![Effet memoire DBD](https://raw.githubusercontent.com/jpbrasile/images/main/effet_memoire_dbd.png)
+
+**Commentaire:** L'effet memoire DBD permet d'atteindre 50 kV effectif avec un generateur +/-25 kV. Les charges accumulees sur le dielectrique lors du pulse positif s'ajoutent au pulse negatif suivant, doublant la tension effective.
+
+### 2.3 Domaine de Validite des Modes
+
+![Domaine validite](https://raw.githubusercontent.com/jpbrasile/images/main/domaine_validite_modes.png)
+
+**Commentaire:**
+- **Zone verte (Capacitif):** Couvre tout le domaine CCTP (V: 80-500mL, sigma: 1-50 mS/cm)
+- **Zone jaune (Resistif OK):** Limitee a sigma < 5 mS/cm
+- **Zone rouge (Resistif inefficace):** E_reel ~ 0, inutilisable
+
+---
+
+## 3. Architecture Revisee
+
+### 3.1 Schema Cellule Mode Capacitif
+
+![Schema cellule](https://raw.githubusercontent.com/jpbrasile/images/main/schema_cellule_anneau_garde.png)
+
+**Commentaire:** La cellule utilise des electrodes PEEK isolant (3mm) pour le mode capacitif. Les anneaux de garde permettent d'ajuster le volume sans changer le gap. Le gap minimum est de 10mm pour respecter E_max = 50 kV/cm.
+
+### 3.2 Specifications Revisees
+
+![Specifications revisees](https://raw.githubusercontent.com/jpbrasile/images/main/resume_specifications_REVISE.png)
+
+**Commentaire:** Le mode CAPACITIF (DBD) devient le mode PRINCIPAL. Le mode resistif est relegue en mode secondaire, reserve aux milieux peu conducteurs (sigma < 5 mS/cm).
+
+---
+
+## 4. Resultats Simulation Corrigee
+
+### 4.1 Mode Resistif @ sigma = 50 mS/cm
+
+| Cellule | Volume | E_theorique | E_REEL | Efficacite | Statut |
+|---------|--------|-------------|--------|------------|--------|
+| Petite | 10 mL | 31.2 kV/cm | 0.01 kV/cm | 0.0% | **INUTILISABLE** |
+| Petite | 80 mL | 31.2 kV/cm | 0.01 kV/cm | 0.0% | **INUTILISABLE** |
+| Grande | 100 mL | 20.8 kV/cm | 0.01 kV/cm | 0.0% | **INUTILISABLE** |
+| Grande | 500 mL | 20.8 kV/cm | 0.01 kV/cm | 0.05% | **INUTILISABLE** |
+
+### 4.2 Mode Capacitif (DBD) @ sigma = 50 mS/cm
+
+| Cellule | Volume | E_REEL | I | Marge I | Statut |
+|---------|--------|--------|---|---------|--------|
+| Grande | 80 mL | 41.7 kV/cm | 0.5 A | 100% | **OK** |
+| Grande | 290 mL | 41.7 kV/cm | 1.8 A | 99% | **OK** |
+| Grande | 500 mL | 41.7 kV/cm | 3.2 A | 98% | **OK** |
+
+### 4.3 Mode Resistif - Domaine de Validite
+
+| sigma (mS/cm) | R_med (Ohm) | R_elec (Ohm) | E_reel (kV/cm) | Efficacite |
+|---------------|-------------|--------------|----------------|------------|
+| 1 | 2.88 | 60 | 0.49 | 2.3% |
+| 5 | 0.58 | 60 | 0.10 | 0.5% |
+| 10 | 0.29 | 60 | 0.05 | 0.2% |
+| 50 | 0.06 | 60 | 0.01 | 0.05% |
+
+**Conclusion:** Le mode resistif n'est utilisable que pour sigma < 5 mS/cm, et meme la l'efficacite reste faible (~2%).
+
+---
+
+## 5. Decisions CTO Requises
+
+### Decision 1: Mode Principal (PRIORITAIRE)
+
+- [ ] **Confirmer le mode CAPACITIF (DBD) comme mode PRINCIPAL**
+- [ ] Conserver le mode resistif comme option pour milieux peu conducteurs
+
+### Decision 2: Architecture Cellules
+
+- [ ] **Cellule unique gap=12mm** (mode capacitif, V: 80-500 mL)
+- [ ] Abandonner la petite cellule gap=8mm (incompatible capacitif)
+
+### Decision 3: Validation Experimentale
+
+- [ ] Valider l'effet memoire DBD experimentalement avant production
+- [ ] Confirmer les performances en mode capacitif sur milieux reels
+
+---
+
+## 6. Specifications Finales Proposees
+
+### Mode CAPACITIF (DBD) - MODE PRINCIPAL
 
 | Parametre | Valeur |
 |-----------|--------|
-| Volume max | 384 mL |
-| sigma_max | 50 mS/cm (full CCTP) |
-| Nb cellules | 2 |
-| E_max | 20.8 kV/cm |
-| Couverture vol. | 77% |
-| Couverture sigma | 100% |
+| Electrodes | PEEK isolant, 3 mm |
+| Tension effective | 50 kV (effet memoire) |
+| Gap minimum | 10 mm |
+| Champ E | 25-42 kV/cm |
+| Conductivite | 1-50 mS/cm (FULL CCTP) |
+| Volume | 80-500 mL |
 
-**Argumentaire:**
-- (+) Full range conductivite 1-50 mS/cm maintenu
-- (+) Epaisseur electrode realiste (25mm)
-- (+) 2 cellules seulement (simplicite)
-- (-) Volume max reduit de 23%
-
-**Recommandation:** Adapte si echantillons typiques < 400 mL
-
----
-
-#### Option B: Reduire sigma_max pour 500 mL
+### Mode RESISTIF - MODE SECONDAIRE (limite)
 
 | Parametre | Valeur |
 |-----------|--------|
-| Volume max | 500 mL |
-| sigma_max @ 500mL | ~1 mS/cm |
-| Nb cellules | 2 |
-| E_max | 20.8 kV/cm |
-| Couverture vol. | 100% |
-| Couverture sigma | 2% |
-
-**Plage de validite (electrode 25mm):**
-- 100 mL -> sigma_max = 50+ mS/cm
-- 200 mL -> sigma_max = 50+ mS/cm
-- 300 mL -> sigma_max = 50+ mS/cm
-- 400 mL -> sigma_max < 50 mS/cm
-- 500 mL -> sigma_max ~ 1 mS/cm
-
-**Argumentaire:**
-- (+) Volume 500 mL possible
-- (+) 2 cellules seulement
-- (-) Limitation conductivite severe (exclut digestats conducteurs)
-
-**Recommandation:** Adapte uniquement pour milieux peu conducteurs
-
----
-
-#### Option C: 3eme Cellule avec Gap=20 mm
-
-| Parametre | Valeur |
-|-----------|--------|
-| Volume max | 500 mL |
-| sigma_max | 50 mS/cm (full CCTP) |
-| Nb cellules | 3 |
-| E_max | 12.5 kV/cm |
-| Couverture vol. | 100% |
-| Couverture sigma | 100% |
-
-**Specifications 3eme cellule:**
-- Gap: 20 mm
-- Volume: 300-500 mL
-- Surface: 150-250 cm2
-- Courant @ 500mL, 50mS/cm: **125 A < 160 A** OK
-
-**Argumentaire:**
-- (+) Full range volume 10-500 mL
-- (+) Full range conductivite 1-50 mS/cm
-- (+) Couverture CCTP 100%
-- (-) Champ E reduit (12.5 kV/cm vs 20.8 kV/cm)
-- (-) 3 cellules au lieu de 2 (cout, complexite)
-
-**Recommandation:** Solution complete si budget permet
-
----
-
-### 3.3 Tableau Comparatif
-
-| Critere | Option A | Option B | Option C | CCTP |
-|---------|----------|----------|----------|------|
-| Volume max | 384 mL | 500 mL | 500 mL | 500 mL |
-| sigma_max @ V_max | 50 mS/cm | ~1 mS/cm | 50 mS/cm | 50 mS/cm |
-| Nb cellules | 2 | 2 | 3 | - |
-| E_max (kV/cm) | 20.8 | 20.8 | 12.5 | >1 |
-| Couverture vol. | 77% | 100% | 100% | 100% |
-| Couverture sigma | 100% | 2% | 100% | 100% |
-
-### 3.4 Recommandation
-
-**Option C recommandee** pour couverture CCTP 100%.
-
-Alternative: **Option A** si les echantillons typiques sont < 400 mL.
-
----
-
-## 4. Resultats Simulation v2
-
-### 4.1 Mode Resistif
-
-| Cellule | Volume | Surface | Epaisseur | E | I | Marge |
-|---------|--------|---------|-----------|---|---|-------|
-| Petite | 10 mL | 12.5 cm2 | 25 mm | 31.2 kV/cm | 6.2 A | 96% |
-| Petite | 45 mL | 56.2 cm2 | 25 mm | 31.2 kV/cm | 28.1 A | 82% |
-| Petite | 80 mL | 100 cm2 | 25 mm | 31.2 kV/cm | 50 A | 69% |
-| Grande | 80 mL | 66.7 cm2 | 25 mm | 20.8 kV/cm | 33.3 A | 79% |
-| Grande | 290 mL | 241.7 cm2 | 25 mm | 20.8 kV/cm | 120.8 A | 25% |
-| Grande | 500 mL | - | - | - | **>160 A** | **INVALIDE** |
-| Tres Grande (C) | 300 mL | 150 cm2 | 25 mm | 12.5 kV/cm | 74.9 A | 53% |
-| Tres Grande (C) | 400 mL | 200 cm2 | 25 mm | 12.5 kV/cm | 99.9 A | 38% |
-| Tres Grande (C) | 500 mL | 250 cm2 | 25 mm | 12.5 kV/cm | 124.9 A | 22% |
-
-### 4.2 Mode Capacitif (DBD)
-
-| Cellule | Volume | Surface | Epaisseur | E | I | Marge |
-|---------|--------|---------|-----------|---|---|-------|
-| Grande | 80 mL | 66.7 cm2 | 3 mm | 41.7 kV/cm | 0.5 A | 100% |
-| Grande | 290 mL | 241.7 cm2 | 3 mm | 41.7 kV/cm | 1.8 A | 99% |
-| Grande | 500 mL | 416.7 cm2 | 3 mm | 41.7 kV/cm | 3.2 A | 98% |
-
-Note: La petite cellule (gap=8mm) n'est pas utilisable en capacitif (gap < 10mm)
-
----
-
-## 5. Materiaux Electrodes
-
-### 5.1 Mode Resistif: TECAPEEK ELS nano black
-
-| Propriete | Valeur |
-|-----------|--------|
-| Resistivite | 100 Ohm.m (milieu gamme 10-1000) |
-| Permittivite | 3.3 |
-| T max service | 260C |
-| Epaisseur | 1-25 mm |
-
-### 5.2 Mode Capacitif: PEEK Standard Isolant
-
-| Propriete | Valeur |
-|-----------|--------|
-| Resistivite | 10^14 Ohm.m |
-| Permittivite | 3.3 |
-| T max service | 260C |
-| Epaisseur | 0.3-3 mm |
-
----
-
-## 6. Points de Decision CTO
-
-### Decision 1: Option pour 500 mL (PRIORITAIRE)
-
-- [ ] Option A: V_max = 384 mL, sigma_max = 50 mS/cm (2 cellules)
-- [ ] Option B: V_max = 500 mL, sigma_max ~ 1 mS/cm (2 cellules)
-- [ ] **Option C: 3eme cellule gap=20mm (RECOMMANDE)**
-
-### Decision 2: Validation Architecture 2 Cellules + Anneaux de Garde
-
-- [ ] Approuve l'architecture avec anneaux de garde reglables
-- [ ] Demande modifications
-
-### Decision 3: Validation Effet Memoire DBD
-
-- [ ] Confirme l'utilisation de l'effet memoire pour 50 kV en capacitif
-- [ ] Demande validation experimentale prealable
+| Electrodes | TECAPEEK ELS, 25 mm |
+| Tension | 25 kV |
+| Gap | 5-8 mm |
+| **Conductivite max** | **5 mS/cm** |
+| Efficacite | < 3% |
 
 ---
 
 ## 7. Prochaines Etapes
 
-1. **Validation CTO** des choix d'architecture
-2. **Dimensionnement detaille** des cellules retenues
-3. **Choix fournisseur** TECAPEEK ELS
-4. **Validation thermique** (echauffement en mode continu)
+1. **Validation CTO** du changement de mode principal
+2. **Tests experimentaux** mode capacitif sur milieux reels
+3. **Validation effet memoire DBD** en laboratoire
+4. **Dimensionnement final** cellule mode capacitif
 5. **Prototype** cellule pilote
 
 ---
@@ -271,38 +175,42 @@ Note: La petite cellule (gap=8mm) n'est pas utilisable en capacitif (gap < 10mm)
 
 ### A. Fichiers de Simulation
 
-- `electrode_simulation_v2.jl` - Code simulation principal
+- `electrode_simulation_v2.jl` - Code simulation principal (CORRIGE)
 - `generate_report_images_v2.jl` - Generation images
-- `results_v2_option_A.csv` - Resultats Option A
-- `results_v2_option_C.csv` - Resultats Option C
+- `results_v2_option_C.csv` - Resultats exportes
 
-### B. Formules Cles
+### B. Formules Corrigees
 
-**Resistance milieu:**
+**Tension reelle dans le gap (mode resistif):**
 ```
-R_med = gap / (sigma x Surface)
-```
-
-**Resistance electrode TECAPEEK:**
-```
-R_elec = rho x epaisseur / Surface
+V_gap = I × R_med = V × R_med / (R_med + 2×R_elec)
 ```
 
-**Impedance totale mode resistif:**
+**Champ electrique REEL:**
 ```
-Z = R_med + 2 x R_elec
-```
-
-**Courant:**
-```
-I = V / Z
+E_reel = V_gap / gap  (PAS V/gap!)
 ```
 
-**Champ electrique:**
+**Efficacite de transfert:**
 ```
-E = V / gap
+Efficacite = V_gap / V_appliquee × 100%
 ```
+
+### C. Images du Rapport
+
+| Image | Description |
+|-------|-------------|
+| conclusion_cto_CRITIQUE.png | Synthese probleme et solution |
+| E_reel_vs_theorique_CRITIQUE.png | Ecart E_theo vs E_reel |
+| distribution_resistances.png | Repartition R_med vs R_elec |
+| efficacite_transfert_tension.png | Efficacite vs conductivite |
+| resistif_vs_capacitif_CONCLUSION.png | Comparaison des modes |
+| effet_memoire_dbd.png | Principe effet memoire DBD |
+| domaine_validite_modes.png | Zones de validite |
+| schema_cellule_anneau_garde.png | Architecture cellule |
+| resume_specifications_REVISE.png | Specs revisees |
 
 ---
 
-*Rapport genere par simulation Julia - electrode_simulation_v2.jl*
+*Rapport genere par simulation Julia - electrode_simulation_v2.jl (CORRIGE)*
+*Correction majeure: prise en compte chute de tension dans electrodes resistives*
