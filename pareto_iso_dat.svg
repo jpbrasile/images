@@ -32,110 +32,117 @@
 
   <!-- Grid lines -->
   <g stroke="#ddd" stroke-width="1">
-    <line x1="100" y1="350" x2="700" y2="350"/>
-    <line x1="100" y1="300" x2="700" y2="300"/>
-    <line x1="100" y1="250" x2="700" y2="250"/>
-    <line x1="100" y1="200" x2="700" y2="200"/>
-    <line x1="100" y1="150" x2="700" y2="150"/>
-    <line x1="200" y1="400" x2="200" y2="100"/>
-    <line x1="300" y1="400" x2="300" y2="100"/>
+    <line x1="100" y1="340" x2="700" y2="340"/>
+    <line x1="100" y1="280" x2="700" y2="280"/>
+    <line x1="100" y1="220" x2="700" y2="220"/>
+    <line x1="100" y1="160" x2="700" y2="160"/>
+    <line x1="100" y1="100" x2="700" y2="100"/>
+    <line x1="175" y1="400" x2="175" y2="100"/>
+    <line x1="250" y1="400" x2="250" y2="100"/>
+    <line x1="325" y1="400" x2="325" y2="100"/>
     <line x1="400" y1="400" x2="400" y2="100"/>
-    <line x1="500" y1="400" x2="500" y2="100"/>
-    <line x1="600" y1="400" x2="600" y2="100"/>
+    <line x1="475" y1="400" x2="475" y2="100"/>
+    <line x1="550" y1="400" x2="550" y2="100"/>
+    <line x1="625" y1="400" x2="625" y2="100"/>
   </g>
 
-  <!-- X axis ticks and labels -->
+  <!-- X axis ticks and labels (5 to 14 kV/cm) -->
+  <!-- Scale: x = 100 + (E-5)*75 -->
   <g font-family="Arial, sans-serif" font-size="11" fill="#333">
     <text x="100" y="420" text-anchor="middle">5</text>
-    <text x="200" y="420" text-anchor="middle">7</text>
-    <text x="300" y="420" text-anchor="middle">9</text>
-    <text x="400" y="420" text-anchor="middle">11</text>
-    <text x="500" y="420" text-anchor="middle">13</text>
-    <text x="600" y="420" text-anchor="middle">15</text>
+    <text x="175" y="420" text-anchor="middle">6</text>
+    <text x="250" y="420" text-anchor="middle">7</text>
+    <text x="325" y="420" text-anchor="middle">8</text>
+    <text x="400" y="420" text-anchor="middle">9</text>
+    <text x="475" y="420" text-anchor="middle">10</text>
+    <text x="550" y="420" text-anchor="middle">11</text>
+    <text x="625" y="420" text-anchor="middle">12</text>
+    <text x="700" y="420" text-anchor="middle">13</text>
   </g>
 
-  <!-- Y axis ticks and labels -->
+  <!-- Y axis ticks and labels (0 to 4 J) -->
+  <!-- Scale: y = 400 - Energy*75 -->
   <g font-family="Arial, sans-serif" font-size="11" fill="#333">
-    <text x="90" y="400" text-anchor="end">0</text>
-    <text x="90" y="350" text-anchor="end">1</text>
-    <text x="90" y="300" text-anchor="end">2</text>
-    <text x="90" y="250" text-anchor="end">3</text>
-    <text x="90" y="200" text-anchor="end">4</text>
-    <text x="90" y="150" text-anchor="end">5</text>
+    <text x="90" y="404" text-anchor="end">0</text>
+    <text x="90" y="340" text-anchor="end">0.8</text>
+    <text x="90" y="280" text-anchor="end">1.6</text>
+    <text x="90" y="220" text-anchor="end">2.4</text>
+    <text x="90" y="160" text-anchor="end">3.2</text>
+    <text x="90" y="100" text-anchor="end">4.0</text>
   </g>
 
   <!-- Threshold line E_c = 5 kV/cm -->
   <line x1="100" y1="400" x2="100" y2="100" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="110" y="95" font-family="Arial, sans-serif" font-size="10" fill="#ff6b6b">E_c = 5 kV/cm</text>
+  <text x="108" y="95" font-family="Arial, sans-serif" font-size="10" fill="#ff6b6b">E_c=5</text>
 
-  <!-- Data points and Pareto front -->
-  <!-- n=100: E=5.1 kV/cm, Energy=12.91 J (off chart) -->
-  <!-- n=50: E=5.2 kV/cm, Energy=6.66 J (off chart) -->
-  <!-- n=25: E=5.3 kV/cm, Energy=3.54 J -->
-  <!-- n=15: E=5.5 kV/cm, Energy=2.30 J -->
-  <!-- n=10: E=5.8 kV/cm, Energy=1.69 J -->
-  <!-- n=5: E=6.6 kV/cm, Energy=1.10 J -->
-  <!-- n=3: E=7.7 kV/cm, Energy=0.89 J -->
-  <!-- n=2: E=9.1 kV/cm, Energy=0.82 J (OPTIMAL) -->
-  <!-- n=1: E=13.1 kV/cm, Energy=0.86 J -->
+  <!-- Data points - Scale: x = 100 + (E-5)*75, y = 400 - Energy*75 -->
+  <!-- n=25: E=5.3 kV/cm, Energy=3.54 J → x=122.5, y=134.5 -->
+  <!-- n=15: E=5.5 kV/cm, Energy=2.30 J → x=137.5, y=227.5 -->
+  <!-- n=10: E=5.8 kV/cm, Energy=1.69 J → x=160, y=273.25 -->
+  <!-- n=5: E=6.6 kV/cm, Energy=1.10 J → x=220, y=317.5 -->
+  <!-- n=3: E=7.7 kV/cm, Energy=0.89 J → x=302.5, y=333.25 -->
+  <!-- n=2: E=9.1 kV/cm, Energy=0.82 J → x=407.5, y=338.5 (OPTIMAL) -->
+  <!-- n=1: E=13.1 kV/cm, Energy=0.86 J → x=707.5, y=335.5 -->
 
-  <!-- Scale: X: 100 + (E-5)*50, Y: 400 - E*50 -->
-
-  <!-- Pareto front line -->
-  <polyline points="115,223 125,185 140,131.5 180,95 235,85.5 300,79 400,77 500,86"
-            fill="none" stroke="#2196F3" stroke-width="2"/>
+  <!-- Pareto front line (correct order: high n to low n, i.e., low E to high E) -->
+  <polyline points="122,135 138,228 160,273 220,318 303,333 408,339 700,336"
+            fill="none" stroke="#2196F3" stroke-width="3"/>
 
   <!-- Data points -->
-  <!-- n=25: (5.3, 3.54) -> (115, 223) -->
-  <circle cx="115" cy="223" r="8" fill="#2196F3"/>
-  <text x="125" y="235" font-family="Arial, sans-serif" font-size="10" fill="#333">n=25</text>
+  <!-- n=25 -->
+  <circle cx="122" cy="135" r="8" fill="#2196F3"/>
+  <text x="132" y="125" font-family="Arial, sans-serif" font-size="10" fill="#333">n=25</text>
+  <text x="132" y="138" font-family="Arial, sans-serif" font-size="9" fill="#666">3.54 J</text>
 
-  <!-- n=15: (5.5, 2.30) -> (125, 285) -->
-  <circle cx="125" cy="285" r="8" fill="#2196F3"/>
-  <text x="135" y="295" font-family="Arial, sans-serif" font-size="10" fill="#333">n=15</text>
+  <!-- n=15 -->
+  <circle cx="138" cy="228" r="8" fill="#2196F3"/>
+  <text x="148" y="218" font-family="Arial, sans-serif" font-size="10" fill="#333">n=15</text>
+  <text x="148" y="231" font-family="Arial, sans-serif" font-size="9" fill="#666">2.30 J</text>
 
-  <!-- n=10: (5.8, 1.69) -> (140, 315.5) -->
-  <circle cx="140" cy="315" r="8" fill="#2196F3"/>
-  <text x="150" y="325" font-family="Arial, sans-serif" font-size="10" fill="#333">n=10</text>
+  <!-- n=10 -->
+  <circle cx="160" cy="273" r="8" fill="#2196F3"/>
+  <text x="170" y="263" font-family="Arial, sans-serif" font-size="10" fill="#333">n=10</text>
+  <text x="170" y="276" font-family="Arial, sans-serif" font-size="9" fill="#666">1.69 J</text>
 
-  <!-- n=5: (6.6, 1.10) -> (180, 345) -->
-  <circle cx="180" cy="345" r="8" fill="#2196F3"/>
-  <text x="190" y="355" font-family="Arial, sans-serif" font-size="10" fill="#333">n=5</text>
+  <!-- n=5 -->
+  <circle cx="220" cy="318" r="8" fill="#2196F3"/>
+  <text x="230" y="308" font-family="Arial, sans-serif" font-size="10" fill="#333">n=5</text>
+  <text x="230" y="321" font-family="Arial, sans-serif" font-size="9" fill="#666">1.10 J</text>
 
-  <!-- n=3: (7.7, 0.89) -> (235, 355.5) -->
-  <circle cx="235" cy="355" r="8" fill="#2196F3"/>
-  <text x="245" y="365" font-family="Arial, sans-serif" font-size="10" fill="#333">n=3</text>
+  <!-- n=3 -->
+  <circle cx="303" cy="333" r="8" fill="#2196F3"/>
+  <text x="313" y="323" font-family="Arial, sans-serif" font-size="10" fill="#333">n=3</text>
+  <text x="313" y="336" font-family="Arial, sans-serif" font-size="9" fill="#666">0.89 J</text>
 
-  <!-- n=2: (9.1, 0.82) -> (305, 359) OPTIMAL -->
-  <circle cx="305" cy="359" r="12" fill="#4CAF50" stroke="#2E7D32" stroke-width="3"/>
-  <text x="320" y="350" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2E7D32">n=2 (OPTIMAL)</text>
-  <text x="320" y="365" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">0.82 J, 9.1 kV/cm</text>
+  <!-- n=2 (OPTIMAL) -->
+  <circle cx="408" cy="339" r="12" fill="#4CAF50" stroke="#2E7D32" stroke-width="3"/>
+  <text x="423" y="325" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2E7D32">n=2 (OPTIMAL)</text>
+  <text x="423" y="342" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">0.82 J, 9.1 kV/cm</text>
 
-  <!-- n=1: (13.1, 0.86) -> (505, 357) -->
-  <circle cx="505" cy="357" r="8" fill="#FF9800"/>
-  <text x="515" y="345" font-family="Arial, sans-serif" font-size="10" fill="#333">n=1 (monocoup)</text>
-  <text x="515" y="360" font-family="Arial, sans-serif" font-size="10" fill="#666">0.86 J, 13.1 kV/cm</text>
+  <!-- n=1 (monocoup) -->
+  <circle cx="700" cy="336" r="8" fill="#FF9800"/>
+  <text x="640" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">n=1 (monocoup)</text>
+  <text x="640" y="375" font-family="Arial, sans-serif" font-size="10" fill="#666">0.86 J, 13.1 kV/cm</text>
 
-  <!-- Annotations -->
-  <!-- Zone labels -->
-  <rect x="450" y="120" width="220" height="100" rx="5" fill="white" stroke="#ddd"/>
-  <text x="560" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Compromis E_field / Énergie</text>
-  <text x="470" y="160" font-family="Arial, sans-serif" font-size="11" fill="#333">• n↑ : E_field↓ mais Énergie↑</text>
-  <text x="470" y="178" font-family="Arial, sans-serif" font-size="11" fill="#333">• Optimum à n=2-3 pulses</text>
-  <text x="470" y="196" font-family="Arial, sans-serif" font-size="11" fill="#333">• Monocoup sous-optimal</text>
-  <text x="470" y="214" font-family="Arial, sans-serif" font-size="11" fill="#666">(énergie perdue au-dessus E_c)</text>
+  <!-- Annotations box -->
+  <rect x="480" y="100" width="200" height="110" rx="5" fill="white" stroke="#ddd"/>
+  <text x="580" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Compromis E / Énergie</text>
+  <text x="490" y="142" font-family="Arial, sans-serif" font-size="11" fill="#333">• n↑ : E↓ mais Énergie↑</text>
+  <text x="490" y="160" font-family="Arial, sans-serif" font-size="11" fill="#333">• Optimum à n=2 pulses</text>
+  <text x="490" y="178" font-family="Arial, sans-serif" font-size="11" fill="#333">• Monocoup sous-optimal</text>
+  <text x="490" y="196" font-family="Arial, sans-serif" font-size="10" fill="#666">(énergie gaspillée > E_c)</text>
 
-  <!-- Arrow showing tradeoff direction -->
-  <path d="M 180 280 Q 140 320 120 280" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="130" y="260" font-family="Arial, sans-serif" font-size="10" fill="#999">Burst</text>
-  <text x="125" y="272" font-family="Arial, sans-serif" font-size="10" fill="#999">n↑</text>
+  <!-- Arrow showing direction -->
+  <path d="M 180 200 C 150 240 140 280 155 310" fill="none" stroke="#999" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="120" y="250" font-family="Arial, sans-serif" font-size="10" fill="#999">n ↑</text>
 
   <!-- Legend -->
-  <rect x="550" y="280" width="140" height="80" rx="5" fill="white" stroke="#ddd"/>
-  <circle cx="570" cy="300" r="6" fill="#4CAF50"/>
-  <text x="585" y="304" font-family="Arial, sans-serif" font-size="11" fill="#333">Optimum (n=2)</text>
-  <circle cx="570" cy="325" r="6" fill="#2196F3"/>
-  <text x="585" y="329" font-family="Arial, sans-serif" font-size="11" fill="#333">Front Pareto</text>
-  <circle cx="570" cy="350" r="6" fill="#FF9800"/>
-  <text x="585" y="354" font-family="Arial, sans-serif" font-size="11" fill="#333">Monocoup</text>
+  <rect x="550" y="260" width="130" height="85" rx="5" fill="white" stroke="#ddd"/>
+  <text x="615" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Légende</text>
+  <circle cx="565" cy="298" r="6" fill="#4CAF50"/>
+  <text x="580" y="302" font-family="Arial, sans-serif" font-size="10" fill="#333">Optimum (n=2)</text>
+  <circle cx="565" cy="318" r="6" fill="#2196F3"/>
+  <text x="580" y="322" font-family="Arial, sans-serif" font-size="10" fill="#333">Front Pareto</text>
+  <circle cx="565" cy="338" r="6" fill="#FF9800"/>
+  <text x="580" y="342" font-family="Arial, sans-serif" font-size="10" fill="#333">Monocoup</text>
 </svg>
