@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620">
+  <title>Figure 4 — Chronogramme de la forme d'onde burst+plateau (invention)</title>
+  <defs>
+    <style>
+      .axis { stroke: #333; stroke-width: 1.5; fill: none; }
+      .grid { stroke: #ddd; stroke-width: 0.5; fill: none; }
+      .wave-hv { stroke: #c0392b; stroke-width: 2.5; fill: none; }
+      .wave-lv { stroke: #2980b9; stroke-width: 2.5; fill: none; }
+      .wave-zero { stroke: #7f8c8d; stroke-width: 2; fill: none; stroke-dasharray: 6,3; }
+      .wave-vm { stroke: #27ae60; stroke-width: 1.5; fill: none; stroke-dasharray: 4,2; }
+      .label { font-family: Arial, sans-serif; font-size: 13px; fill: #333; }
+      .label-bold { font-family: Arial, sans-serif; font-size: 13px; fill: #333; font-weight: bold; }
+      .label-small { font-family: Arial, sans-serif; font-size: 11px; fill: #666; }
+      .label-tiny { font-family: Arial, sans-serif; font-size: 10px; fill: #999; }
+      .label-title { font-family: Arial, sans-serif; font-size: 16px; fill: #222; font-weight: bold; }
+      .label-subtitle { font-family: Arial, sans-serif; font-size: 12px; fill: #555; font-style: italic; }
+      .dim-line { stroke: #555; stroke-width: 1; fill: none; marker-end: url(#arrowR); marker-start: url(#arrowL); }
+      .dim-ext { stroke: #999; stroke-width: 0.5; fill: none; stroke-dasharray: 2,2; }
+      .phase-fill-hv { fill: #e74c3c; opacity: 0.08; }
+      .phase-fill-lv { fill: #3498db; opacity: 0.08; }
+      .phase-fill-zero { fill: #ecf0f1; opacity: 0.5; }
+      .switch-on { fill: #2ecc71; }
+      .switch-off { fill: #e0e0e0; }
+      .switch-label { font-family: monospace; font-size: 10px; fill: #333; }
+      .rc-curve { stroke: #c0392b; stroke-width: 2; fill: none; opacity: 0.6; }
+    </style>
+    <marker id="arrowR" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L6,3 L0,6" fill="#555"/>
+    </marker>
+    <marker id="arrowL" viewBox="0 0 6 6" refX="0" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M6,0 L0,3 L6,6" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" class="label-title">Chronogramme — Forme d'onde burst+plateau (un cycle complet)</text>
+  <text x="450" y="46" text-anchor="middle" class="label-subtitle">V_peak = 10 kV, V_plateau = 500 V, t_peak = 15 us, t_plateau = 60 us, t_zero = 15 us</text>
+
+  <!-- ============================================================ -->
+  <!-- PANEL 1: Voltage waveform V(t) across chamber -->
+  <!-- ============================================================ -->
+  <!-- Plot area: x=[80,850], y=[70,340], V range: -12kV to +12kV, t range: 0 to 120 us -->
+  <!-- Scale: 1 us = (850-80)/120 = 6.42 px, 1 kV = (340-70)/24 = 11.25 px -->
+  <!-- V=0 line at y = 70 + (340-70)/2 = 205 -->
+  <!-- t=0 at x=80 -->
+
+  <!-- Phase background fills -->
+  <!-- Phase 1: +HV burst [0, 15 us] -->
+  <rect x="80" y="70" width="96" height="270" class="phase-fill-hv"/>
+  <!-- Phase 2: -HV burst [15, 30 us] -->
+  <rect x="176" y="70" width="96" height="270" class="phase-fill-hv"/>
+  <!-- Phase 3: Plateau [30, 90 us] -->
+  <rect x="272" y="70" width="386" height="270" class="phase-fill-lv"/>
+  <!-- Phase 4: Dead time [90, 105 us] -->
+  <rect x="658" y="70" width="96" height="270" class="phase-fill-zero"/>
+  <!-- Phase 5: Next cycle start [105, 120 us] -->
+  <rect x="754" y="70" width="96" height="270" class="phase-fill-hv"/>
+
+  <!-- Grid lines (horizontal, voltage) -->
+  <line x1="80" y1="92" x2="850" y2="92" class="grid"/>   <!-- +10 kV -->
+  <line x1="80" y1="115" x2="850" y2="115" class="grid"/>  <!-- +8 kV -->
+  <line x1="80" y1="148" x2="850" y2="148" class="grid"/>  <!-- +5 kV -->
+  <line x1="80" y1="205" x2="850" y2="205" class="grid"/>  <!-- 0 V -->
+  <line x1="80" y1="262" x2="850" y2="262" class="grid"/>  <!-- -5 kV -->
+  <line x1="80" y1="295" x2="850" y2="295" class="grid"/>  <!-- -8 kV -->
+  <line x1="80" y1="318" x2="850" y2="318" class="grid"/>  <!-- -10 kV -->
+
+  <!-- Y-axis labels -->
+  <text x="72" y="96" text-anchor="end" class="label-small">+10 kV</text>
+  <text x="72" y="152" text-anchor="end" class="label-small">+5 kV</text>
+  <text x="72" y="200" text-anchor="end" class="label-small">+500 V</text>
+  <text x="72" y="210" text-anchor="end" class="label-small">0</text>
+  <text x="72" y="266" text-anchor="end" class="label-small">-5 kV</text>
+  <text x="72" y="322" text-anchor="end" class="label-small">-10 kV</text>
+
+  <!-- Axes -->
+  <line x1="80" y1="205" x2="860" y2="205" class="axis"/>  <!-- x-axis (V=0) -->
+  <line x1="80" y1="65" x2="80" y2="345" class="axis"/>    <!-- y-axis -->
+
+  <!-- Axis label -->
+  <text x="25" y="205" text-anchor="middle" class="label-bold" transform="rotate(-90,25,205)">V(t) [kV]</text>
+
+  <!-- ============================================================ -->
+  <!-- Voltage waveform -->
+  <!-- ============================================================ -->
+
+  <!-- Phase 1: +HV burst with RC decay [0-15 us] -->
+  <!-- V starts at +10kV (y=92), decays with tau~8us to ~+8.5kV at 15us -->
+  <path d="M80,205 L80,92
+           C96,92 112,97 140,100
+           L176,104" class="wave-hv"/>
+
+  <!-- Phase 1→2 transition: rapid switch -->
+  <path d="M176,104 L176,318" class="wave-hv"/>
+
+  <!-- Phase 2: -HV burst with RC decay [15-30 us] -->
+  <!-- V starts at -10kV (y=318), decays toward ~-8.5kV -->
+  <path d="M176,318
+           C192,318 208,313 236,310
+           L272,306" class="wave-hv"/>
+
+  <!-- Phase 2→3 transition: switch to plateau -->
+  <path d="M272,306 L272,199" class="wave-hv"/>
+
+  <!-- Phase 3: Plateau at +500V [30-90 us] -->
+  <!-- V_plateau = 500V — at this scale it's just above 0 line -->
+  <!-- Show as pulsed sub-pulses (not DC!) — series of short ON/OFF -->
+  <path d="M272,199 L290,199 L290,205 L298,205 L298,199 L316,199 L316,205 L324,205 L324,199
+           L342,199 L342,205 L350,205 L350,199 L368,199 L368,205 L376,205 L376,199
+           L394,199 L394,205 L402,205 L402,199 L420,199 L420,205 L428,205 L428,199
+           L446,199 L446,205 L454,205 L454,199 L472,199 L472,205 L480,205 L480,199
+           L498,199 L498,205 L506,205 L506,199 L524,199 L524,205 L532,205 L532,199
+           L550,199 L550,205 L558,205 L558,199 L576,199 L576,205 L584,205 L584,199
+           L602,199 L602,205 L610,205 L610,199 L628,199 L628,205 L636,205 L636,199
+           L654,199 L654,205 L658,205" class="wave-lv"/>
+
+  <!-- Phase 3→4 transition: all OFF -->
+  <path d="M658,205 L658,205" class="wave-zero"/>
+
+  <!-- Phase 4: Dead time [90-105 us], V=0 -->
+  <line x1="658" y1="205" x2="754" y2="205" class="wave-zero"/>
+
+  <!-- Phase 5: Next cycle starts [105 us] -->
+  <path d="M754,205 L754,92 L772,92" class="wave-hv"/>
+
+  <!-- Dashed V_plateau level line -->
+  <line x1="272" y1="199" x2="658" y2="199" stroke="#3498db" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="660" y="196" class="label-tiny">+500 V</text>
+
+  <!-- ============================================================ -->
+  <!-- Phase labels (above waveform) -->
+  <!-- ============================================================ -->
+  <text x="128" y="82" text-anchor="middle" class="label-bold" fill="#c0392b">Burst +HV</text>
+  <text x="224" y="82" text-anchor="middle" class="label-bold" fill="#c0392b">Burst -HV</text>
+  <text x="465" y="82" text-anchor="middle" class="label-bold" fill="#2980b9">Plateau pulse LV</text>
+  <text x="706" y="82" text-anchor="middle" class="label-bold" fill="#7f8c8d">t_zero</text>
+  <text x="790" y="82" text-anchor="middle" class="label-bold" fill="#c0392b">Cycle</text>
+  <text x="790" y="95" text-anchor="middle" class="label-bold" fill="#c0392b">suivant</text>
+
+  <!-- Physical effect annotations -->
+  <text x="176" y="350" text-anchor="middle" class="label-small" fill="#c0392b">PORATION</text>
+  <text x="176" y="363" text-anchor="middle" class="label-tiny" fill="#c0392b">(Krassowska-Filev)</text>
+  <text x="465" y="350" text-anchor="middle" class="label-small" fill="#2980b9">TRANSPORT IONIQUE</text>
+  <text x="465" y="363" text-anchor="middle" class="label-tiny" fill="#2980b9">(Nernst-Planck, AC)</text>
+  <text x="706" y="350" text-anchor="middle" class="label-small" fill="#7f8c8d">repos</text>
+
+  <!-- ============================================================ -->
+  <!-- Dimension arrows (below plot) -->
+  <!-- ============================================================ -->
+
+  <!-- t_peak dimension [0-15 us] -->
+  <line x1="80" y1="378" x2="80" y2="395" class="dim-ext"/>
+  <line x1="176" y1="378" x2="176" y2="395" class="dim-ext"/>
+  <line x1="82" y1="388" x2="174" y2="388" class="dim-line"/>
+  <text x="128" y="402" text-anchor="middle" class="label-small">t_peak</text>
+  <text x="128" y="414" text-anchor="middle" class="label-tiny">15 us</text>
+
+  <!-- t_peak dimension [15-30 us] (second burst) -->
+  <line x1="272" y1="378" x2="272" y2="395" class="dim-ext"/>
+  <line x1="178" y1="388" x2="270" y2="388" class="dim-line"/>
+  <text x="224" y="402" text-anchor="middle" class="label-small">t_peak</text>
+  <text x="224" y="414" text-anchor="middle" class="label-tiny">15 us</text>
+
+  <!-- t_plateau dimension [30-90 us] -->
+  <line x1="658" y1="378" x2="658" y2="395" class="dim-ext"/>
+  <line x1="274" y1="388" x2="656" y2="388" class="dim-line"/>
+  <text x="465" y="402" text-anchor="middle" class="label-small">t_plateau</text>
+  <text x="465" y="414" text-anchor="middle" class="label-tiny">60 us</text>
+
+  <!-- t_zero dimension [90-105 us] -->
+  <line x1="754" y1="378" x2="754" y2="395" class="dim-ext"/>
+  <line x1="660" y1="388" x2="752" y2="388" class="dim-line"/>
+  <text x="706" y="402" text-anchor="middle" class="label-small">t_zero</text>
+  <text x="706" y="414" text-anchor="middle" class="label-tiny">15 us</text>
+
+  <!-- Total cycle time -->
+  <line x1="80" y1="428" x2="80" y2="445" class="dim-ext"/>
+  <line x1="754" y1="428" x2="754" y2="445" class="dim-ext"/>
+  <line x1="82" y1="438" x2="752" y2="438" class="dim-line"/>
+  <text x="417" y="454" text-anchor="middle" class="label-bold">T_cycle = 105 us (f_rep ~ 9.5 kHz)</text>
+
+  <!-- ============================================================ -->
+  <!-- Switch timing diagram (bottom) -->
+  <!-- ============================================================ -->
+
+  <!-- Background -->
+  <rect x="80" y="475" width="770" height="130" fill="#f8f9fa" stroke="#ddd" stroke-width="0.5" rx="3"/>
+
+  <!-- Switch labels -->
+  <text x="30" y="498" text-anchor="start" class="switch-label">H1+B2</text>
+  <text x="30" y="518" text-anchor="start" class="switch-label">H2+B1</text>
+  <text x="30" y="538" text-anchor="start" class="switch-label">BT1</text>
+  <text x="30" y="558" text-anchor="start" class="switch-label">Courant</text>
+
+  <!-- H1+B2: ON during [0-15us], OFF otherwise -->
+  <rect x="80" y="488" width="96" height="14" rx="2" class="switch-on"/>
+  <rect x="176" y="488" width="578" height="14" rx="2" class="switch-off"/>
+  <rect x="754" y="488" width="96" height="14" rx="2" class="switch-on"/>
+  <text x="128" y="499" text-anchor="middle" class="switch-label" fill="white">ON</text>
+
+  <!-- H2+B1: ON during [15-30us], OFF otherwise -->
+  <rect x="80" y="508" width="96" height="14" rx="2" class="switch-off"/>
+  <rect x="176" y="508" width="96" height="14" rx="2" class="switch-on"/>
+  <rect x="272" y="508" width="578" height="14" rx="2" class="switch-off"/>
+  <text x="224" y="519" text-anchor="middle" class="switch-label" fill="white">ON</text>
+
+  <!-- BT1: ON during [30-90us], OFF otherwise -->
+  <rect x="80" y="528" width="192" height="14" rx="2" class="switch-off"/>
+  <rect x="272" y="528" width="386" height="14" rx="2" fill="#3498db"/>
+  <rect x="658" y="528" width="192" height="14" rx="2" class="switch-off"/>
+  <text x="465" y="539" text-anchor="middle" class="switch-label" fill="white">ON (pulse)</text>
+
+  <!-- Current indicator: high during burst, low during plateau, zero during dead -->
+  <path d="M80,558 L80,548 L170,550 L176,558 L176,548 L266,550 L272,558 L272,554 L650,556 L658,558 L754,558 L754,548"
+        stroke="#e67e22" stroke-width="1.5" fill="none"/>
+  <text x="128" y="570" text-anchor="middle" class="label-tiny" fill="#e67e22">I_burst</text>
+  <text x="465" y="570" text-anchor="middle" class="label-tiny" fill="#e67e22">I_transport</text>
+
+  <!-- Legend -->
+  <text x="80" y="600" class="label-tiny">Note : Le signal de plateau est un train d'impulsions AC (non DC) grace aux condensateurs serie C1/C4.</text>
+  <text x="80" y="612" class="label-tiny">La decroissance RC pendant le burst est due a la charge des condensateurs serie (tau = R_ch x C_serie ~ 5-10 us).</text>
+
+</svg>
