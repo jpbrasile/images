@@ -33,6 +33,9 @@
     </marker>
   </defs>
 
+  <!-- White background -->
+  <rect x="0" y="0" width="900" height="620" fill="white"/>
+
   <!-- Title -->
   <text x="450" y="28" text-anchor="middle" class="label-title">Chronogramme — Forme d'onde burst+plateau (un cycle complet)</text>
   <text x="450" y="46" text-anchor="middle" class="label-subtitle">V_peak = 10 kV, V_plateau = 500 V, t_peak = 15 us, t_plateau = 60 us, t_zero = 15 us</text>
