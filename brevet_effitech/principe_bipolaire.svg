@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" width="800" height="550">
+  <title>Générateur Bipolaire - Pont en H avec BT₁/BT₂ Plateau (sans condensateur série)</title>
+  <defs>
+    <style>
+      .wire { stroke: #000; stroke-width: 2; fill: none; }
+      .label { font-family: Arial, sans-serif; font-size: 14px; fill: #000; }
+      .label-big { font-family: Arial, sans-serif; font-size: 16px; fill: #000; }
+    </style>
+
+    <!-- Ground symbol -->
+    <g id="gnd">
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#000" stroke-width="2"/>
+      <line x1="-10" y1="5" x2="10" y2="5" stroke="#000" stroke-width="2"/>
+      <line x1="-7" y1="10" x2="7" y2="10" stroke="#000" stroke-width="2"/>
+      <line x1="-4" y1="15" x2="4" y2="15" stroke="#000" stroke-width="2"/>
+    </g>
+
+    <!-- Capacitor vertical -->
+    <g id="capa">
+      <line x1="0" y1="-15" x2="0" y2="-4" stroke="#000" stroke-width="2"/>
+      <line x1="-10" y1="-4" x2="10" y2="-4" stroke="#000" stroke-width="3"/>
+      <line x1="-10" y1="4" x2="10" y2="4" stroke="#000" stroke-width="3"/>
+      <line x1="0" y1="4" x2="0" y2="15" stroke="#000" stroke-width="2"/>
+    </g>
+
+    <!-- Diode pointing UP (cathode at top) -->
+    <g id="diode-up">
+      <line x1="0" y1="-12" x2="0" y2="-6" stroke="#000" stroke-width="2"/>
+      <line x1="-6" y1="-6" x2="6" y2="-6" stroke="#000" stroke-width="2"/>
+      <polygon points="-6,6 6,6 0,-6" fill="#000"/>
+      <line x1="0" y1="6" x2="0" y2="12" stroke="#000" stroke-width="2"/>
+    </g>
+
+    <!-- Diode pointing DOWN (cathode at bottom) -->
+    <g id="diode-down">
+      <line x1="0" y1="-12" x2="0" y2="-6" stroke="#000" stroke-width="2"/>
+      <polygon points="-6,-6 6,-6 0,6" fill="#000"/>
+      <line x1="-6" y1="6" x2="6" y2="6" stroke="#000" stroke-width="2"/>
+      <line x1="0" y1="6" x2="0" y2="12" stroke="#000" stroke-width="2"/>
+    </g>
+
+    <!-- Switch -->
+    <g id="switch">
+      <line x1="0" y1="-10" x2="0" y2="-3" stroke="#000" stroke-width="2"/>
+      <circle cx="0" cy="-3" r="2" fill="#000"/>
+      <line x1="0" y1="-3" x2="10" y2="7" stroke="#000" stroke-width="2"/>
+      <circle cx="0" cy="10" r="2" fill="#000"/>
+      <line x1="0" y1="10" x2="0" y2="18" stroke="#000" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="550" fill="#fff"/>
+
+  <!-- ========== LEFT DC BUS (+25kV) ========== -->
+  <line x1="60" y1="60" x2="60" y2="380" class="wire"/>
+
+  <!-- +25kV label -->
+  <circle cx="60" cy="60" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <line x1="56" y1="60" x2="64" y2="60" stroke="#000" stroke-width="2"/>
+  <line x1="60" y1="56" x2="60" y2="64" stroke="#000" stroke-width="2"/>
+  <text x="10" y="55" class="label-big">+25kV</text>
+
+  <!-- Left capacitor -->
+  <use href="#capa" x="60" y="110"/>
+
+  <!-- Left ground -->
+  <use href="#gnd" x="60" y="380"/>
+
+  <!-- ========== LEFT HALF-BRIDGE (H1 + B1) ========== -->
+
+  <!-- From +25kV to H1 -->
+  <line x1="60" y1="80" x2="200" y2="80" class="wire"/>
+  <line x1="200" y1="80" x2="200" y2="95" class="wire"/>
+
+  <!-- H1 Diode -->
+  <line x1="200" y1="95" x2="165" y2="95" class="wire"/>
+  <use href="#diode-up" x="165" y="115"/>
+  <line x1="165" y1="127" x2="165" y2="145" class="wire"/>
+  <line x1="165" y1="145" x2="200" y2="145" class="wire"/>
+
+  <!-- H1 Switch -->
+  <use href="#switch" x="200" y="110"/>
+  <text x="215" y="120" class="label-big">H₁</text>
+
+  <!-- Node A -->
+  <line x1="200" y1="128" x2="200" y2="200" class="wire"/>
+  <circle cx="200" cy="200" r="4" fill="#000"/>
+
+  <!-- B1 Diode -->
+  <line x1="200" y1="200" x2="200" y2="220" class="wire"/>
+  <line x1="200" y1="220" x2="165" y2="220" class="wire"/>
+  <use href="#diode-up" x="165" y="240"/>
+  <line x1="165" y1="252" x2="165" y2="270" class="wire"/>
+  <line x1="165" y1="270" x2="200" y2="270" class="wire"/>
+
+  <!-- B1 Switch -->
+  <use href="#switch" x="200" y="235"/>
+  <text x="215" y="245" class="label-big">B₁</text>
+
+  <!-- B1 to ground -->
+  <line x1="200" y1="253" x2="200" y2="380" class="wire"/>
+  <line x1="60" y1="380" x2="200" y2="380" class="wire"/>
+  <use href="#gnd" x="200" y="380"/>
+
+  <!-- ========== BT1: +V PLATEAU (connected to A) ========== -->
+
+  <!-- Branch from A to BT1 -->
+  <line x1="200" y1="200" x2="120" y2="200" class="wire"/>
+  <line x1="120" y1="200" x2="120" y2="220" class="wire"/>
+
+  <!-- BT1 Diode -->
+  <use href="#diode-up" x="120" y="240"/>
+  <text x="80" y="245" class="label-big">BT₁</text>
+
+  <!-- BT1 Switch -->
+  <line x1="120" y1="252" x2="120" y2="270" class="wire"/>
+  <use href="#switch" x="120" y="285"/>
+
+  <!-- BT1 to +V plateau voltage supply -->
+  <line x1="120" y1="303" x2="120" y2="420" class="wire"/>
+
+  <!-- +V Plateau voltage source -->
+  <circle cx="120" cy="420" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <line x1="116" y1="420" x2="124" y2="420" stroke="#000" stroke-width="2"/>
+  <line x1="120" y1="416" x2="120" y2="424" stroke="#000" stroke-width="2"/>
+  <line x1="120" y1="426" x2="120" y2="450" class="wire"/>
+  <use href="#gnd" x="120" y="450"/>
+  <text x="55" y="470" class="label">+V plateau</text>
+
+  <!-- ========== CENTER CHAMBER ========== -->
+
+  <!-- Wire A to chamber -->
+  <line x1="200" y1="200" x2="330" y2="200" class="wire"/>
+  <text x="250" y="190" class="label-big">A</text>
+
+  <!-- Chamber -->
+  <line x1="330" y1="200" x2="360" y2="200" class="wire"/>
+  <line x1="360" y1="160" x2="360" y2="240" stroke="#000" stroke-width="4"/>
+  <line x1="440" y1="160" x2="440" y2="240" stroke="#000" stroke-width="4"/>
+  <line x1="440" y1="200" x2="470" y2="200" class="wire"/>
+
+  <!-- Wire chamber to B -->
+  <line x1="470" y1="200" x2="600" y2="200" class="wire"/>
+  <text x="540" y="190" class="label-big">B</text>
+  <circle cx="600" cy="200" r="4" fill="#000"/>
+
+  <!-- ========== RIGHT HALF-BRIDGE (H2 + B2) ========== -->
+
+  <!-- From -25kV to H2 -->
+  <line x1="740" y1="80" x2="600" y2="80" class="wire"/>
+  <line x1="600" y1="80" x2="600" y2="95" class="wire"/>
+
+  <!-- H2 Diode -->
+  <line x1="600" y1="95" x2="635" y2="95" class="wire"/>
+  <use href="#diode-down" x="635" y="115"/>
+  <line x1="635" y1="127" x2="635" y2="145" class="wire"/>
+  <line x1="635" y1="145" x2="600" y2="145" class="wire"/>
+
+  <!-- H2 Switch -->
+  <use href="#switch" x="600" y="110"/>
+  <text x="560" y="120" class="label-big">H₂</text>
+
+  <!-- Node B -->
+  <line x1="600" y1="128" x2="600" y2="200" class="wire"/>
+
+  <!-- B2 Diode -->
+  <line x1="600" y1="200" x2="600" y2="220" class="wire"/>
+  <line x1="600" y1="220" x2="635" y2="220" class="wire"/>
+  <use href="#diode-down" x="635" y="240"/>
+  <line x1="635" y1="252" x2="635" y2="270" class="wire"/>
+  <line x1="635" y1="270" x2="600" y2="270" class="wire"/>
+
+  <!-- B2 Switch -->
+  <use href="#switch" x="600" y="235"/>
+  <text x="560" y="245" class="label-big">B₂</text>
+
+  <!-- B2 to ground -->
+  <line x1="600" y1="253" x2="600" y2="380" class="wire"/>
+  <line x1="600" y1="380" x2="740" y2="380" class="wire"/>
+  <use href="#gnd" x="600" y="380"/>
+
+  <!-- ========== BT2: -V PLATEAU (connected to B) ========== -->
+
+  <!-- Branch from B to BT2 -->
+  <line x1="600" y1="200" x2="680" y2="200" class="wire"/>
+  <line x1="680" y1="200" x2="680" y2="220" class="wire"/>
+
+  <!-- BT2 Diode (anode toward B, cathode toward -V supply) -->
+  <use href="#diode-down" x="680" y="240"/>
+  <text x="695" y="245" class="label-big">BT₂</text>
+
+  <!-- BT2 Switch -->
+  <line x1="680" y1="252" x2="680" y2="270" class="wire"/>
+  <use href="#switch" x="680" y="285"/>
+
+  <!-- BT2 to -V plateau voltage supply -->
+  <line x1="680" y1="303" x2="680" y2="420" class="wire"/>
+
+  <!-- -V Plateau voltage source (negative: minus sign only) -->
+  <circle cx="680" cy="420" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <line x1="676" y1="420" x2="684" y2="420" stroke="#000" stroke-width="2"/>
+  <line x1="680" y1="426" x2="680" y2="450" class="wire"/>
+  <use href="#gnd" x="680" y="450"/>
+  <text x="655" y="470" class="label">−V plateau</text>
+
+  <!-- ========== RIGHT DC BUS (-25kV) ========== -->
+  <line x1="740" y1="60" x2="740" y2="380" class="wire"/>
+
+  <!-- -25kV label (negative) -->
+  <circle cx="740" cy="60" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <line x1="736" y1="60" x2="744" y2="60" stroke="#000" stroke-width="2"/>
+  <text x="750" y="65" class="label-big">-25kV</text>
+
+  <!-- Right capacitor -->
+  <use href="#capa" x="740" y="110"/>
+
+  <!-- Right ground -->
+  <use href="#gnd" x="740" y="380"/>
+
+</svg>
