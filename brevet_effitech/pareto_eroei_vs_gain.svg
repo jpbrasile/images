@@ -307,6 +307,6 @@
   <text x="642" y="221" class="label">C-STEP deg. &#x2014; Invention</text>
   <text x="765" y="242" text-anchor="middle" class="label-small" fill="#e74c3c">Invention : ratio x2 &#xe0; x3 vs. carr&#xe9;</text>
   <text x="200" y="100" class="label-small" fill="#888">Zone ideale</text>
-  <text x="200" y="114" class="label-small" fill="#888">(haut EROEI + haut gain)</text>
+  <text x="200" y="114" class="label-small" fill="#888">(haut ratio + haut gain)</text>
   <path d="M190,95 L160,85" stroke="#bbb" stroke-width="1" fill="none" marker-end="url(#arr)"/>
 </svg>
