@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620">
-  <title>Figure 4 — Chronogramme de la forme d'onde burst+plateau (invention)</title>
+  <title>Figure 7 — Chronogramme de la forme d'onde burst+plateau (invention)</title>
   <defs>
     <style>
       .axis { stroke: #333; stroke-width: 1.5; fill: none; }
@@ -221,7 +221,7 @@
   <text x="465" y="570" text-anchor="middle" class="label-tiny" fill="#e67e22">I_transport</text>
 
   <!-- Legend -->
-  <text x="80" y="600" class="label-tiny">Note : Le signal de plateau est un train d'impulsions AC (non DC) grace aux condensateurs serie C1/C4.</text>
+  <text x="80" y="600" class="label-tiny">Note : Le signal de plateau est un train d'impulsions AC (non DC) grace aux condensateurs serie C1/C2 ou par inversion temporelle.</text>
   <text x="80" y="612" class="label-tiny">La decroissance RC pendant le burst est due a la charge des condensateurs serie (tau = R_ch x C_serie ~ 5-10 us).</text>
 
 </svg>

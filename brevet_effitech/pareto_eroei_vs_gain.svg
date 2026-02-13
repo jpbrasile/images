@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="950" height="560">
-  <title>Figure 5 - Front de Pareto : EROEI vs Gain CH4</title>
+  <title>Figure 9 - Front de Pareto : Ratio energetique vs Gain CH4</title>
   <defs><style>
     .axis { stroke: #333; stroke-width: 1.5; fill: none; }
     .grid { stroke: #e0e0e0; stroke-width: 0.5; fill: none; }
@@ -11,8 +11,8 @@
     .label-subtitle { font-family: Arial, sans-serif; font-size: 12px; fill: #555; font-style: italic; }
   </style></defs>
   <rect width="950" height="560" fill="white"/>
-  <text x="450" y="28" text-anchor="middle" class="label-title">Front de Pareto : EROEI economique vs. Gain CH4 (%)</text>
-  <text x="450" y="44" text-anchor="middle" class="label-subtitle">240 configurations PEF - 3 cas x 2 formes d'onde (carre vs. invention burst+plateau)</text>
+  <text x="450" y="28" text-anchor="middle" class="label-title">Front de Pareto : Ratio &#xe9;nerg&#xe9;tique vs. Gain CH4 (%)</text>
+  <text x="450" y="44" text-anchor="middle" class="label-subtitle">240 configurations PEF - 3 cas x 2 formes d'onde (carr&#xe9; vs. invention burst+plateau)</text>
   <line x1="100" y1="55" x2="100" y2="450" class="grid"/>
   <text x="100" y="468" text-anchor="middle" class="label-small">0</text>
   <line x1="200" y1="55" x2="200" y2="450" class="grid"/>
@@ -49,7 +49,7 @@
   <text x="92" y="78" text-anchor="end" class="label-small">40</text>
   <line x1="100" y1="450" x2="800" y2="450" class="axis"/>
   <line x1="100" y1="55" x2="100" y2="450" class="axis"/>
-  <text x="450" y="488" text-anchor="middle" class="label-bold">EROEI economique (sans unite)</text>
+  <text x="450" y="488" text-anchor="middle" class="label-bold">Ratio &#xe9;nerg&#xe9;tique (kWh CH4 / kWh &#xe9;lec.)</text>
   <text x="28" y="252" text-anchor="middle" class="label-bold" transform="rotate(-90,28,252)">Gain CH4 (%)</text>
   <circle cx="337.5" cy="312.9" r="4.5" fill="#3498db" opacity="0.65" stroke="#3498db" stroke-width="0.5"/>
   <circle cx="267.5" cy="281.8" r="4.5" fill="#3498db" opacity="0.65" stroke="#3498db" stroke-width="0.5"/>
@@ -294,18 +294,18 @@
   <rect x="610" y="70" width="310" height="180" fill="white" stroke="#ccc" stroke-width="1" rx="4"/>
   <text x="765" y="88" text-anchor="middle" class="label-bold">Legende</text>
   <circle cx="630" cy="110" r="5" fill="#3498db" opacity="0.7"/>
-  <text x="642" y="114" class="label">A-STEP ÔÇö Carre</text>
+  <text x="642" y="114" class="label">A-STEP &#x2014; Carr&#xe9;</text>
   <rect x="625" y="125" width="10" height="10" fill="#2471a3" opacity="0.7" transform="rotate(45,630,130)"/>
-  <text x="642" y="134" class="label">B-Agricole ÔÇö Carre</text>
+  <text x="642" y="134" class="label">B-Agricole &#x2014; Carr&#xe9;</text>
   <polygon points="630,142 625,152 635,152" fill="#1a5276" opacity="0.7"/>
-  <text x="642" y="154" class="label">C-STEP deg. ÔÇö Carre</text>
+  <text x="642" y="154" class="label">C-STEP deg. &#x2014; Carr&#xe9;</text>
   <circle cx="630" cy="177" r="5" fill="#e74c3c" opacity="0.7"/>
-  <text x="642" y="181" class="label">A-STEP ÔÇö Invention</text>
+  <text x="642" y="181" class="label">A-STEP &#x2014; Invention</text>
   <rect x="625" y="192" width="10" height="10" fill="#cb4335" opacity="0.7" transform="rotate(45,630,197)"/>
-  <text x="642" y="201" class="label">B-Agricole ÔÇö Invention</text>
+  <text x="642" y="201" class="label">B-Agricole &#x2014; Invention</text>
   <polygon points="630,209 625,219 635,219" fill="#922b21" opacity="0.7"/>
-  <text x="642" y="221" class="label">C-STEP deg. ÔÇö Invention</text>
-  <text x="765" y="242" text-anchor="middle" class="label-small" fill="#e74c3c">Invention : EROEI x2 a x3 vs. carre</text>
+  <text x="642" y="221" class="label">C-STEP deg. &#x2014; Invention</text>
+  <text x="765" y="242" text-anchor="middle" class="label-small" fill="#e74c3c">Invention : ratio x2 &#xe0; x3 vs. carr&#xe9;</text>
   <text x="200" y="100" class="label-small" fill="#888">Zone ideale</text>
   <text x="200" y="114" class="label-small" fill="#888">(haut EROEI + haut gain)</text>
   <path d="M190,95 L160,85" stroke="#bbb" stroke-width="1" fill="none" marker-end="url(#arr)"/>
