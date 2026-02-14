@@ -1,0 +1,534 @@
+<svg width="1200" height="1895" viewBox="0 0 1200 1895" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrows -->
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L7,3 z" fill="#555"/>
+    </marker>
+    <marker id="arr-w" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L7,3 z" fill="#fff"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L7,3 z" fill="#2980B9"/>
+    </marker>
+    <!-- Gradients -->
+    <linearGradient id="gHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1B2838"/>
+      <stop offset="100%" style="stop-color:#2874A6"/>
+    </linearGradient>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D6EAF8"/>
+      <stop offset="100%" style="stop-color:#AED6F1"/>
+    </linearGradient>
+    <linearGradient id="gGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4EFDF"/>
+      <stop offset="100%" style="stop-color:#A9DFBF"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDEBD0"/>
+      <stop offset="100%" style="stop-color:#FAD7A0"/>
+    </linearGradient>
+    <linearGradient id="gPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5EEF8"/>
+      <stop offset="100%" style="stop-color:#E8DAEF"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF9E7"/>
+      <stop offset="100%" style="stop-color:#F9E79F"/>
+    </linearGradient>
+    <linearGradient id="gPass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#27AE60"/>
+      <stop offset="100%" style="stop-color:#2ECC71"/>
+    </linearGradient>
+    <linearGradient id="gPipeline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2C3E50"/>
+      <stop offset="20%" style="stop-color:#2874A6"/>
+      <stop offset="40%" style="stop-color:#8E44AD"/>
+      <stop offset="60%" style="stop-color:#E67E22"/>
+      <stop offset="80%" style="stop-color:#27AE60"/>
+      <stop offset="100%" style="stop-color:#16A085"/>
+    </linearGradient>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <filter id="sh-sm" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1895" fill="#F8F9FA" rx="14"/>
+
+  <!-- ================================================================ -->
+  <!-- HEADER                                                           -->
+  <!-- ================================================================ -->
+  <rect x="0" y="0" width="1200" height="95" fill="url(#gHeader)" rx="14"/>
+  <rect x="0" y="50" width="1200" height="45" fill="url(#gHeader)"/>
+  <text x="600" y="38" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#fff">Biorefinery Digital Twin</text>
+  <text x="600" y="62" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#AED6F1">GPU-accelerated plasma, electroporation (PEF) and anaerobic digestion for biorefinery design</text>
+  <text x="600" y="82" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#7FB3D8">Julia + CUDA | 330k lines | 29,128 unit tests | 47 physics validations</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 1: WHAT IS THIS?                                         -->
+  <!-- ================================================================ -->
+  <text x="40" y="128" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50">What does it simulate?</text>
+  <line x1="40" y1="134" x2="280" y2="134" stroke="#2874A6" stroke-width="2"/>
+
+  <!-- Context box -->
+  <rect x="40" y="148" width="1120" height="70" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="60" y="172" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2C3E50">
+    <tspan font-weight="bold">Three coupled technologies:</tspan> cold atmospheric plasma (DBD, jet, glidarc), pulsed electric field electroporation (PEF/CEP), and anaerobic digestion.</text>
+  <text x="60" y="192" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#555">This code is a <tspan font-weight="bold">digital twin</tspan>: a physics-based model covering electrons to biogas, from Boltzmann kinetics to reduced ADM1,</text>
+  <text x="60" y="208" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#555">replacing trial-and-error with GPU-accelerated simulation (10&#xb9;&#x2078; time-scale ratio, ps electrons to days digestion).</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 2: THE PHYSICS PIPELINE                                  -->
+  <!-- ================================================================ -->
+  <text x="40" y="260" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50">The physics pipeline: from voltage to biogas</text>
+  <line x1="40" y1="266" x2="480" y2="266" stroke="#2874A6" stroke-width="2"/>
+
+  <!-- Pipeline flow: 6 stages (160px boxes, 30px arrow gaps) -->
+  <!-- Stage 1: Electric Fields -->
+  <rect x="40" y="285" width="160" height="100" rx="12" fill="url(#gBlue)" stroke="#2874A6" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="120" y="313" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#2874A6">E</text>
+  <text x="120" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1A5276">Electric Fields</text>
+  <text x="120" y="352" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">Applied voltage creates</text>
+  <text x="120" y="365" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">strong E-fields in the gas</text>
+  <!-- Arrow 1→2 -->
+  <line x1="200" y1="335" x2="227" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 2: Electron Kinetics -->
+  <rect x="230" y="285" width="160" height="100" rx="12" fill="url(#gPurple)" stroke="#8E44AD" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="310" y="313" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#8E44AD">e&#x207B;</text>
+  <text x="310" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#6C3483">Electron Kinetics</text>
+  <text x="310" y="352" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">Electrons accelerated,</text>
+  <text x="310" y="365" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">collide with gas molecules</text>
+  <!-- Arrow 2→3 -->
+  <line x1="390" y1="335" x2="417" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 3: Reactive Chemistry -->
+  <rect x="420" y="285" width="160" height="100" rx="12" fill="url(#gOrange)" stroke="#E67E22" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="500" y="313" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#E67E22">O&#x2083;</text>
+  <text x="500" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#A04000">Reactive Chemistry</text>
+  <text x="500" y="352" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">Ozone, NOx, OH radicals</text>
+  <text x="500" y="365" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">produced in the gas</text>
+  <!-- Arrow 3→4 -->
+  <line x1="580" y1="335" x2="607" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 4: PEF + Liquid -->
+  <rect x="610" y="285" width="160" height="100" rx="12" fill="url(#gGreen)" stroke="#27AE60" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="690" y="313" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#27AE60">PEF</text>
+  <text x="690" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1E8449">Electroporation</text>
+  <text x="690" y="352" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">Pore kinetics, Goertzel 2MHz,</text>
+  <text x="690" y="365" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">9 waveforms, protein extraction</text>
+  <!-- Arrow 4→5 -->
+  <line x1="770" y1="335" x2="797" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 5: CAP (Cold Atmospheric Plasma on liquid) -->
+  <rect x="800" y="285" width="160" height="100" rx="12" fill="url(#gBlue)" stroke="#2874A6" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="880" y="313" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#2874A6">OH</text>
+  <text x="880" y="335" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1A5276">CAP Treatment</text>
+  <text x="880" y="352" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">ROS transfer, EPS destruction,</text>
+  <text x="880" y="365" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">enhanced hydrolysis</text>
+  <!-- Arrow 5→6 -->
+  <line x1="960" y1="335" x2="987" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Stage 6: Biodigestion -->
+  <rect x="990" y="285" width="160" height="100" rx="12" fill="url(#gGold)" stroke="#D4AC0D" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <text x="1070" y="310" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#D4AC0D">CH&#x2084;</text>
+  <text x="1070" y="332" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7D6608">Biodigestion</text>
+  <text x="1070" y="349" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">ADM1: biogas yield,</text>
+  <text x="1070" y="362" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">CH&#x2084;/CO&#x2082;/H&#x2082;S,</text>
+  <text x="1070" y="375" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#2C3E50">BMP, EROEI</text>
+
+  <!-- Time-scale bar -->
+  <rect x="40" y="400" width="1110" height="22" rx="6" fill="#EAECEE" stroke="#D5D8DC" stroke-width="0.5"/>
+  <text x="120" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~ns</text>
+  <text x="310" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~ps-ns</text>
+  <text x="500" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~us-s</text>
+  <text x="690" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~us-min (PEF)</text>
+  <text x="880" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~s-min (CAP)</text>
+  <text x="1070" y="415" font-family="monospace" font-size="9" text-anchor="middle" fill="#7F8C8D">~days (ADM1)</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 3: THE 14 MODULES (from src/ + chemistry_mvp)            -->
+  <!-- ================================================================ -->
+  <text x="40" y="468" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50">Code modules (14 simulation modules)</text>
+  <line x1="40" y1="474" x2="400" y2="474" stroke="#2874A6" stroke-width="2"/>
+
+  <!-- Group 1: Electric Fields & Circuits (blue) — 4 modules -->
+  <rect x="40" y="492" width="265" height="270" rx="10" fill="#fff" stroke="#2874A6" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="40" y="492" width="265" height="32" rx="10" fill="#2874A6"/>
+  <rect x="40" y="510" width="265" height="14" fill="#2874A6"/>
+  <text x="172" y="514" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">Fields + Circuits</text>
+
+  <!-- Electrical3D -->
+  <rect x="55" y="530" width="235" height="48" rx="8" fill="url(#gBlue)" stroke="#AED6F1" stroke-width="1"/>
+  <text x="65" y="546" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1A5276">Electrical3D</text>
+  <text x="65" y="560" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">3D Poisson/Laplace via Walk-on-Spheres</text>
+  <text x="65" y="572" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">349M walks/sec, SDF geometry, CSG</text>
+
+  <!-- ElectricalModel -->
+  <rect x="55" y="584" width="235" height="48" rx="8" fill="url(#gBlue)" stroke="#AED6F1" stroke-width="1"/>
+  <text x="65" y="600" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1A5276">ElectricalModel</text>
+  <text x="65" y="614" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">0D circuit solver (ModelingToolkit.jl)</text>
+  <text x="65" y="626" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Inductance, capacitance, power balance</text>
+
+  <!-- PlasmaCoupling -->
+  <rect x="55" y="638" width="235" height="48" rx="8" fill="url(#gBlue)" stroke="#AED6F1" stroke-width="1"/>
+  <text x="65" y="654" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1A5276">PlasmaCoupling</text>
+  <text x="65" y="668" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">DBD, jet, glidarc + plasma-liquid interface</text>
+  <text x="65" y="680" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Lissajous Q-V, Henry's law, ROS transfer</text>
+
+  <!-- Hybrid -->
+  <rect x="55" y="692" width="235" height="48" rx="8" fill="url(#gBlue)" stroke="#AED6F1" stroke-width="1"/>
+  <text x="65" y="708" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1A5276">Hybrid</text>
+  <text x="65" y="722" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">CPU fluid + GPU particle coupling</text>
+  <text x="65" y="734" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Gliding arc, restrike, jet propagation</text>
+
+  <!-- Group 2: Particle Kinetics (purple) — 5 modules -->
+  <rect x="325" y="492" width="265" height="270" rx="10" fill="#fff" stroke="#8E44AD" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="325" y="492" width="265" height="32" rx="10" fill="#8E44AD"/>
+  <rect x="325" y="510" width="265" height="14" fill="#8E44AD"/>
+  <text x="457" y="514" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">Particle Kinetics</text>
+
+  <!-- GPU2 -->
+  <rect x="340" y="530" width="235" height="42" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1"/>
+  <text x="350" y="544" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6C3483">GPU2 (MCC/PIC)</text>
+  <text x="350" y="556" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Monte Carlo Collisions + Particle-in-Cell</text>
+  <text x="350" y="567" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Swarm, avalanche, secondary electrons</text>
+
+  <!-- GPU3D Integration -->
+  <rect x="340" y="576" width="235" height="42" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1"/>
+  <text x="350" y="590" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6C3483">GPU3D Integration</text>
+  <text x="350" y="602" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Full 3D PIC-MCC with Poisson + AMR</text>
+  <text x="350" y="613" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Boris, Esirkepov, WaterLily coupling</text>
+
+  <!-- Physics -->
+  <rect x="340" y="622" width="235" height="42" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1"/>
+  <text x="350" y="636" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6C3483">Physics (Cross-Sections)</text>
+  <text x="350" y="648" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Ar, N&#x2082;, O&#x2082;, CO&#x2082;, H&#x2082;S, CH&#x2084;, Air</text>
+  <text x="350" y="659" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">LXCat: elastic, ionization, dissociation</text>
+
+  <!-- Photoionization -->
+  <rect x="340" y="668" width="235" height="42" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1"/>
+  <text x="350" y="682" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6C3483">Photoionization</text>
+  <text x="350" y="694" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Zheleznyak model, Helmholtz solver</text>
+  <text x="350" y="705" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">GPU kernels, DST spectral method</text>
+
+  <!-- StreamerSubgrid -->
+  <rect x="340" y="714" width="235" height="42" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1"/>
+  <text x="350" y="728" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6C3483">StreamerSubgrid</text>
+  <text x="350" y="740" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Streamer channel sub-grid model</text>
+  <text x="350" y="751" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Halo transport, filament kernels</text>
+
+  <!-- Group 3: Chemistry + Bio (green/orange) — 3 modules -->
+  <rect x="610" y="492" width="265" height="270" rx="10" fill="#fff" stroke="#27AE60" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="610" y="492" width="265" height="32" rx="10" fill="#27AE60"/>
+  <rect x="610" y="510" width="265" height="14" fill="#27AE60"/>
+  <text x="742" y="514" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">Chemistry + Bio</text>
+
+  <!-- Chemistry MVP -->
+  <rect x="625" y="530" width="235" height="55" rx="8" fill="url(#gOrange)" stroke="#FAD7A0" stroke-width="1"/>
+  <text x="635" y="548" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#A04000">Chemistry MVP</text>
+  <text x="635" y="562" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Gas-phase 0D kinetics (Arrhenius, Troe)</text>
+  <text x="635" y="576" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">O&#x2083;/NOx/OH/CO&#x2082; conversion efficiency</text>
+
+  <!-- Liquid -->
+  <rect x="625" y="593" width="235" height="55" rx="8" fill="url(#gGreen)" stroke="#A9DFBF" stroke-width="1"/>
+  <text x="635" y="611" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1E8449">Liquid (Electroporation)</text>
+  <text x="635" y="625" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">PEF: 9 waveforms, Goertzel 2MHz fatigue</text>
+  <text x="635" y="639" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Pore kinetics, Nernst-Planck, cell lysis</text>
+
+  <!-- Biodigester -->
+  <rect x="625" y="656" width="235" height="55" rx="8" fill="url(#gGreen)" stroke="#A9DFBF" stroke-width="1"/>
+  <text x="635" y="674" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1E8449">Biodigester (ADM1)</text>
+  <text x="635" y="688" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Reduced ADM1 anaerobic digestion</text>
+  <text x="635" y="702" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Monod kinetics, PEF/CAP coupling, biogas</text>
+
+  <!-- Group 4: Intelligence + Industrial (gold) — 2 modules -->
+  <rect x="895" y="492" width="265" height="150" rx="10" fill="#fff" stroke="#D4AC0D" stroke-width="1.5" filter="url(#sh)"/>
+  <rect x="895" y="492" width="265" height="32" rx="10" fill="#D4AC0D"/>
+  <rect x="895" y="510" width="265" height="14" fill="#D4AC0D"/>
+  <text x="1027" y="514" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">Intelligence + Industrial</text>
+
+  <!-- Surrogate -->
+  <rect x="910" y="530" width="235" height="48" rx="8" fill="url(#gGold)" stroke="#F9E79F" stroke-width="1"/>
+  <text x="920" y="546" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#7D6608">Surrogate (ML)</text>
+  <text x="920" y="560" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">ML models trained on simulation data</text>
+  <text x="920" y="572" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Validity envelope, uncertainty quantification</text>
+
+  <!-- Industrial -->
+  <rect x="910" y="584" width="235" height="48" rx="8" fill="url(#gGold)" stroke="#F9E79F" stroke-width="1"/>
+  <text x="920" y="600" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#7D6608">Industrial</text>
+  <text x="920" y="614" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#2C3E50">Biorefinery optimizer, CAPEX model</text>
+  <text x="920" y="626" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#7F8C8D">Mass-energy balance, hub-spoke integration</text>
+
+  <!-- Key technique labels -->
+  <rect x="895" y="656" width="265" height="106" rx="10" fill="#fff" stroke="#566573" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="1027" y="676" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#2C3E50">Key numerical methods</text>
+  <text x="910" y="694" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#555">&#x2022; PIC-MCC (particle-in-cell + Monte Carlo)</text>
+  <text x="910" y="708" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#555">&#x2022; WOS (Walk-on-Spheres, mesh-free)</text>
+  <text x="910" y="722" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#555">&#x2022; Esirkepov + Boris pusher</text>
+  <text x="910" y="736" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#555">&#x2022; AMR + reduced ADM1 (Batstone 2002)</text>
+  <text x="910" y="750" font-family="Arial, Helvetica, sans-serif" font-size="9.5" fill="#555">&#x2022; Zheleznyak photoionization (DST)</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 3b: WHAT QUESTIONS CAN YOU ASK?                          -->
+  <!-- ================================================================ -->
+  <text x="40" y="800" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50">&#xc0; quelles questions r&#xe9;pond le framework ?</text>
+  <line x1="40" y1="806" x2="465" y2="806" stroke="#2874A6" stroke-width="2"/>
+  <text x="40" y="824" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#7F8C8D">32 commandes disponibles &#x2014; posez vos questions en fran&#xe7;ais</text>
+
+  <!-- Panel 1: Plasma & Gaz (row 1, col 1) -->
+  <rect x="40" y="840" width="360" height="115" rx="10" fill="#fff" stroke="#2874A6" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="40" y="840" width="360" height="26" rx="10" fill="#2874A6"/>
+  <rect x="40" y="855" width="360" height="11" fill="#2874A6"/>
+  <text x="220" y="859" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">Plasma &amp; Gaz</text>
+  <text x="55" y="884" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Transport des &#xe9;lectrons dans l'air &#xe0; 100 Td ?</text>
+  <text x="55" y="899" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Simuler une DBD dans le biogaz &#xe0; 10 kV, 10 kHz</text>
+  <text x="55" y="914" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Rendement d'abattement H&#x2082;S pour 2000 ppm ?</text>
+  <text x="55" y="929" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Mode O&#x2083; vs NOx pour un DBD dans l'air humide ?</text>
+
+  <!-- Panel 2: Champs & Electrodes (row 1, col 2) -->
+  <rect x="420" y="840" width="360" height="115" rx="10" fill="#fff" stroke="#8E44AD" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="420" y="840" width="360" height="26" rx="10" fill="#8E44AD"/>
+  <rect x="420" y="855" width="360" height="11" fill="#8E44AD"/>
+  <text x="600" y="859" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">Champs &amp; &#xc9;lectrodes</text>
+  <text x="435" y="884" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Champ E dans une cellule coaxiale Rogowski &#xe0; 50 kV ?</text>
+  <text x="435" y="899" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? M&#xe9;tal vs BaTiO&#x2083; : quel compromis &#xe0; 50 kV ?</text>
+  <text x="435" y="914" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? R&#xe9;soudre Poisson 3D avec charge d'espace</text>
+
+  <!-- Panel 3: Electroporation PEF (row 1, col 3) -->
+  <rect x="800" y="840" width="360" height="115" rx="10" fill="#fff" stroke="#27AE60" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="800" y="840" width="360" height="26" rx="10" fill="#27AE60"/>
+  <rect x="800" y="855" width="360" height="11" fill="#27AE60"/>
+  <text x="980" y="859" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">&#xc9;lectroporation PEF</text>
+  <text x="815" y="884" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? 10 pulses bipolaires 50 kV sur boues WAS : quel BMP ?</text>
+  <text x="815" y="899" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Burst 2 MHz vs plateau classique : efficacit&#xe9; ?</text>
+  <text x="815" y="914" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Dimensionner un r&#xe9;acteur PEF pour 100 m&#xb3;/jour</text>
+  <text x="815" y="929" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Rh&#xe9;ologie Herschel-Bulkley pour boues &#xe0; 8% MS</text>
+
+  <!-- Panel 4: CAP & Digestion (row 2, col 1) -->
+  <rect x="40" y="965" width="360" height="115" rx="10" fill="#fff" stroke="#D4AC0D" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="40" y="965" width="360" height="26" rx="10" fill="#D4AC0D"/>
+  <rect x="40" y="980" width="360" height="11" fill="#D4AC0D"/>
+  <text x="220" y="984" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">CAP &amp; Digestion</text>
+  <text x="55" y="1009" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? 200 W pendant 5 min : combien de OH transf&#xe9;r&#xe9;s ?</text>
+  <text x="55" y="1024" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Digesteur CSTR 1000 m&#xb3;, boues WAS, 35 &#xb0;C : quel BMP ?</text>
+  <text x="55" y="1039" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Gain CH&#x2084; avec PEF + CAP vs baseline ?</text>
+  <text x="55" y="1054" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Comparer boues WAS, d&#xe9;chets alimentaires, agricole</text>
+
+  <!-- Panel 5: Optimisation & Economie (row 2, col 2) -->
+  <rect x="420" y="965" width="360" height="115" rx="10" fill="#fff" stroke="#E67E22" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="420" y="965" width="360" height="26" rx="10" fill="#E67E22"/>
+  <rect x="420" y="980" width="360" height="11" fill="#E67E22"/>
+  <text x="600" y="984" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">Optimisation &amp; &#xc9;conomie</text>
+  <text x="435" y="1009" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Front de Pareto &#xe9;nergie vs BMP</text>
+  <text x="435" y="1024" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Sobol : quels param&#xe8;tres impactent le plus l'EROEI ?</text>
+  <text x="435" y="1039" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? P(NPV &gt; 0) pour le projet bioraffinerie ?</text>
+  <text x="435" y="1054" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? EROEI de la cha&#xee;ne PEF &#x2192; extraction &#x2192; CAP &#x2192; ADM1 ?</text>
+
+  <!-- Panel 6: Validation & Outils (row 2, col 3) -->
+  <rect x="800" y="965" width="360" height="115" rx="10" fill="#fff" stroke="#27AE60" stroke-width="1.5" filter="url(#sh-sm)"/>
+  <rect x="800" y="965" width="360" height="26" rx="10" fill="#27AE60"/>
+  <rect x="800" y="980" width="360" height="11" fill="#27AE60"/>
+  <text x="980" y="984" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">Validation &amp; Outils</text>
+  <text x="815" y="1009" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Lancer la validation V46 ADM1 Batstone</text>
+  <text x="815" y="1024" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? G&#xe9;n&#xe9;rer un rapport de due diligence</text>
+  <text x="815" y="1039" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#2C3E50" font-style="italic">? Entra&#xee;ner un surrogate sur les donn&#xe9;es de sweep</text>
+
+  <g transform="translate(0, 310)">
+  <!-- ================================================================ -->
+  <!-- SECTION 4: VALIDATION SCORECARD                                  -->
+  <!-- ================================================================ -->
+  <text x="40" y="800" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50">Validation: can you trust the results?</text>
+  <line x1="40" y1="806" x2="430" y2="806" stroke="#27AE60" stroke-width="2"/>
+
+  <!-- Big number box -->
+  <rect x="40" y="822" width="220" height="120" rx="14" fill="url(#gPass)" filter="url(#sh)"/>
+  <text x="150" y="870" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="bold" text-anchor="middle" fill="#fff">47/47</text>
+  <text x="150" y="895" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#D5F5E3">physics cases PASS</text>
+  <text x="150" y="915" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#A9DFBF">100% validation pass rate</text>
+  <text x="150" y="932" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#A9DFBF">0 failures, 0 skipped</text>
+
+  <!-- Unit test box -->
+  <rect x="280" y="822" width="180" height="120" rx="14" fill="#2874A6" filter="url(#sh)"/>
+  <text x="370" y="870" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#fff">29,128</text>
+  <text x="370" y="895" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#D6EAF8">unit tests</text>
+  <text x="370" y="915" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#AED6F1">across 14 modules</text>
+  <text x="370" y="932" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#AED6F1">SHA-256 signed results</text>
+
+  <!-- References box -->
+  <rect x="480" y="822" width="180" height="120" rx="14" fill="#8E44AD" filter="url(#sh)"/>
+  <text x="570" y="870" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#fff">45+</text>
+  <text x="570" y="895" font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle" fill="#F5EEF8">publications</text>
+  <text x="570" y="915" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#E8DAEF">used as reference data</text>
+  <text x="570" y="932" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#E8DAEF">Dutton, Shimizu, Jackson...</text>
+
+  <!-- Explanation text -->
+  <rect x="680" y="822" width="480" height="120" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="700" y="848" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">What does "validated" mean?</text>
+  <text x="700" y="868" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#555">Each validation case compares the simulation output against</text>
+  <text x="700" y="884" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#555">published experimental data or analytical solutions. For example:</text>
+  <text x="710" y="904" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555">&#x2022; Electron drift velocities match Dutton (1975) within 2-7%</text>
+  <text x="710" y="920" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555">&#x2022; Ozone concentrations match Shimizu (2012) within 1%</text>
+  <text x="710" y="936" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555">&#x2022; Electrostatic potentials match Jackson (1999) within 3%</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 5: VALIDATION BY DOMAIN                                  -->
+  <!-- ================================================================ -->
+  <text x="40" y="985" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2C3E50">Validation cases by physics domain</text>
+  <line x1="40" y1="991" x2="340" y2="991" stroke="#27AE60" stroke-width="1.5"/>
+
+  <!-- Domain 1: Electron Transport (GPU2) — 10 cases -->
+  <rect x="40" y="1005" width="270" height="250" rx="8" fill="#fff" stroke="#8E44AD" stroke-width="1" filter="url(#sh-sm)"/>
+  <rect x="40" y="1005" width="270" height="26" rx="8" fill="#8E44AD"/>
+  <rect x="40" y="1020" width="270" height="11" fill="#8E44AD"/>
+  <text x="175" y="1023" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">Electron Transport (10 cases)</text>
+  <text x="55" y="1045" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1045" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V01 Paschen breakdown (8.7%)</text>
+  <text x="55" y="1057" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1057" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V13 Swarm drift velocity (2% W)</text>
+  <text x="55" y="1069" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1069" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V14 Plasma oscillation (0.15%)</text>
+  <text x="55" y="1081" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1081" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V15 CO&#x2082; swarm (5.5% W)</text>
+  <text x="55" y="1093" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1093" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V16 Air swarm (7.1% W)</text>
+  <text x="55" y="1105" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1105" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V17 Townsend alpha (1.9x geo)</text>
+  <text x="55" y="1117" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1117" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V18 EEDF vs BOLSIG+ (&lt;10%)</text>
+  <text x="55" y="1129" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1129" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V19 O&#x2082; attachment (10-15%)</text>
+  <text x="55" y="1141" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1141" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V20 Diffusion coefficients (&lt;5%)</text>
+  <text x="55" y="1153" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="90" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V27 SEE yield (&#xb1;15%)</text>
+  <text x="55" y="1237" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">10/10 PASS</text>
+
+  <!-- Domain 2: 3D PIC + Plasma (GPU3D) — 15 cases -->
+  <rect x="325" y="1005" width="270" height="250" rx="8" fill="#fff" stroke="#2874A6" stroke-width="1" filter="url(#sh-sm)"/>
+  <rect x="325" y="1005" width="270" height="26" rx="8" fill="#2874A6"/>
+  <rect x="325" y="1020" width="270" height="11" fill="#2874A6"/>
+  <text x="460" y="1023" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">3D Plasma + Chemistry (15 cases)</text>
+  <text x="340" y="1045" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1045" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V04 Bullet speed + Penning</text>
+  <text x="340" y="1057" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1057" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V08 Air entrainment (regime)</text>
+  <text x="340" y="1069" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1069" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V09 Ozone saturation (&lt;1.1%)</text>
+  <text x="340" y="1081" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1081" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V10 O&#x2083;/NOx transition (88%)</text>
+  <text x="340" y="1093" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1093" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V21 Photoionization (Bourdon)</text>
+  <text x="340" y="1105" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1105" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V24 Boris cyclotron (&lt;0.001%)</text>
+  <text x="340" y="1117" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1117" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V25 Esirkepov conserv. (6e-5)</text>
+  <text x="340" y="1129" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1129" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V33 AMR convergence (&lt;1%)</text>
+  <text x="340" y="1141" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1141" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V34 DST photoionization</text>
+  <text x="340" y="1153" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V36 WaterLily coupling (&lt;1%)</text>
+  <text x="340" y="1165" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1165" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V37 Ion conversion (&#x3c4;&lt;100ns)</text>
+  <text x="340" y="1177" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1177" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V40 Adaptive particle weight</text>
+  <text x="340" y="1189" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1189" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V42 O&#x2082; metastable tracking</text>
+  <text x="340" y="1201" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1201" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V44 H&#x2082;S removal DBD (&#x3b7;&#xb1;15%)</text>
+  <text x="340" y="1213" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="375" y="1213" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V45 H&#x2082;S O&#x2082;-free (10/11)</text>
+  <text x="340" y="1237" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">15/15 PASS</text>
+
+  <!-- Domain 3: Field Solvers (Electrical3D) — 8 cases -->
+  <rect x="610" y="1005" width="270" height="250" rx="8" fill="#fff" stroke="#E67E22" stroke-width="1" filter="url(#sh-sm)"/>
+  <rect x="610" y="1005" width="270" height="26" rx="8" fill="#E67E22"/>
+  <rect x="610" y="1020" width="270" height="11" fill="#E67E22"/>
+  <text x="745" y="1023" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">Field Solvers (8 cases)</text>
+  <text x="625" y="1045" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1045" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V22 WOS Laplace (2.6%)</text>
+  <text x="625" y="1057" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1057" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V23 WOS Poisson (0.97%)</text>
+  <text x="625" y="1069" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1069" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V26 Magnetostatic B (2.3%)</text>
+  <text x="625" y="1081" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1081" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V32 Robin boundary (&lt;8%)</text>
+  <text x="625" y="1093" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1093" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V38 Fine E-field convergence</text>
+  <text x="625" y="1105" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1105" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V39 Texture BC correction</text>
+  <text x="625" y="1117" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1117" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V41 RoundedBox SDF (22% E)</text>
+  <text x="625" y="1129" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="660" y="1129" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V43 Rogowski E-field (CV&lt;2%)</text>
+  <text x="625" y="1237" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">8/8 PASS</text>
+
+  <!-- Domain 4: Liquid + Chemistry + Bio — 13 cases -->
+  <rect x="895" y="1005" width="265" height="250" rx="8" fill="#fff" stroke="#1E8449" stroke-width="1" filter="url(#sh-sm)"/>
+  <rect x="895" y="1005" width="265" height="26" rx="8" fill="#1E8449"/>
+  <rect x="895" y="1020" width="265" height="11" fill="#1E8449"/>
+  <text x="1027" y="1023" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">Liquid + Chem + Bio (14 cases)</text>
+  <text x="910" y="1045" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1045" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V02 APTD regime (Akishev)</text>
+  <text x="910" y="1057" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1057" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V03 Lissajous Q-V (1.3%)</text>
+  <text x="910" y="1069" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1069" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V05 Jet length (Karacas)</text>
+  <text x="910" y="1081" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1081" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V06 Temperature gap (Sun)</text>
+  <text x="910" y="1093" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1093" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V07 Restrike freq. (Fridman)</text>
+  <text x="910" y="1105" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1105" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V11 CO&#x2082; conversion eff.</text>
+  <text x="910" y="1117" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1117" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V12 OH saturation (Verreycken)</text>
+  <text x="910" y="1129" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1129" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V28 Nernst-Planck (&lt;5%)</text>
+  <text x="910" y="1141" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1141" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V29 Polydisperse (~100x)</text>
+  <text x="910" y="1153" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V30 Pore resealing (Saulis)</text>
+  <text x="910" y="1165" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1165" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V31 Surrogate ML fidelity</text>
+  <text x="910" y="1177" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1177" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V35 Herschel-Bulkley (Bird)</text>
+  <text x="910" y="1189" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1189" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V46 Biodigester ADM1 (6/6)</text>
+  <text x="910" y="1201" font-family="monospace" font-size="9" fill="#27AE60">PASS</text><text x="945" y="1201" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#2C3E50">V47 Multi-Waveform EP (5.3%)</text>
+  <text x="910" y="1237" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">14/14 PASS</text>
+
+  </g>
+
+  <g transform="translate(0, 375)">
+  <!-- ================================================================ -->
+  <!-- SECTION 6: SCALE NUMBERS                                         -->
+  <!-- ================================================================ -->
+  <text x="40" y="1230" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2C3E50">Scale and scope</text>
+  <line x1="40" y1="1236" x2="190" y2="1236" stroke="#2874A6" stroke-width="1.5"/>
+
+  <!-- 6 metric boxes in a row -->
+  <rect x="40" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="125" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#2874A6">330k</text>
+  <text x="125" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">lines of Julia code</text>
+  <text x="125" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">src + test + validation</text>
+
+  <rect x="230" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="315" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#8E44AD">14</text>
+  <text x="315" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">simulation modules</text>
+  <text x="315" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">from electrons to biogas</text>
+
+  <rect x="420" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="505" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#E67E22">10&#xb9;&#x2078;</text>
+  <text x="505" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">time-scale ratio</text>
+  <text x="505" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">ps electrons to days digestion</text>
+
+  <rect x="610" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="695" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#27AE60">349M</text>
+  <text x="695" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">walks/sec (GPU)</text>
+  <text x="695" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">WOS field solver throughput</text>
+
+  <rect x="800" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="885" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#D4AC0D">7</text>
+  <text x="885" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">gas species</text>
+  <text x="885" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">Ar, N&#x2082;, O&#x2082;, CO&#x2082;, H&#x2082;S, CH&#x2084;, Air</text>
+
+  <rect x="990" y="1250" width="170" height="75" rx="10" fill="#fff" stroke="#D5D8DC" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="1075" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#C0392B">3D</text>
+  <text x="1075" y="1300" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#555">geometry support</text>
+  <text x="1075" y="1315" font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle" fill="#7F8C8D">SDF primitives + CSG Boolean</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 7: APPLICATION TARGETS                                   -->
+  <!-- ================================================================ -->
+  <text x="40" y="1370" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2C3E50">Modelled reactor types</text>
+  <line x1="40" y1="1376" x2="250" y2="1376" stroke="#2874A6" stroke-width="1.5"/>
+
+  <!-- 5 reactor types -->
+  <rect x="40" y="1390" width="215" height="58" rx="8" fill="url(#gBlue)" stroke="#AED6F1" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="148" y="1416" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1A5276">DBD (Dielectric Barrier)</text>
+  <text x="148" y="1434" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#555">Micro-discharges, ozone, H&#x2082;S</text>
+
+  <rect x="265" y="1390" width="215" height="58" rx="8" fill="url(#gPurple)" stroke="#E8DAEF" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="373" y="1416" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#6C3483">Plasma Jet</text>
+  <text x="373" y="1434" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#555">He/air bullets, Penning ionization</text>
+
+  <rect x="490" y="1390" width="215" height="58" rx="8" fill="url(#gOrange)" stroke="#FAD7A0" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="598" y="1416" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#A04000">Gliding Arc</text>
+  <text x="598" y="1434" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#555">Non-equilibrium, restrike</text>
+
+  <rect x="715" y="1390" width="215" height="58" rx="8" fill="url(#gGreen)" stroke="#A9DFBF" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="823" y="1416" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1E8449">Electroporation (PEF)</text>
+  <text x="823" y="1434" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#555">Pulsed E-field, cell lysis</text>
+
+  <rect x="940" y="1390" width="215" height="58" rx="8" fill="url(#gGold)" stroke="#F9E79F" stroke-width="1" filter="url(#sh-sm)"/>
+  <text x="1048" y="1416" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7D6608">Biodigester (CSTR)</text>
+  <text x="1048" y="1434" font-family="Arial, Helvetica, sans-serif" font-size="9.5" text-anchor="middle" fill="#555">ADM1, Monod kinetics, biogas</text>
+
+  <!-- ================================================================ -->
+  <!-- FOOTER                                                           -->
+  <!-- ================================================================ -->
+  <rect x="0" y="1475" width="1200" height="45" fill="#2C3E50" rx="0"/>
+  <rect x="0" y="1475" width="1200" height="12" fill="#2C3E50"/>
+  <rect x="0" y="1505" width="1200" height="15" fill="#2C3E50" rx="14"/>
+  <text x="600" y="1500" font-family="Arial, Helvetica, sans-serif" font-size="11" text-anchor="middle" fill="#ABB2B9">PlasmaDigitalTwin.jl | GPU-accelerated cold plasma + PEF simulation | 47/47 validated against 45+ published references | 2024-2026</text>
+  </g>
+
+</svg>
